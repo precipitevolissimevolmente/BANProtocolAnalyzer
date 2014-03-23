@@ -1,15 +1,15 @@
 package message;
 
 public class Agent {
-    String name;
+    String identity;
     boolean trustedAuthority;
 
-    public String getName() {
-        return name;
+    public String getIdentity() {
+        return identity;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIdentity(String identity) {
+        this.identity = identity;
     }
 
     public boolean isTrustedAuthority() {
