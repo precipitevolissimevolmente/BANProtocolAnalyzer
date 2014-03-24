@@ -1,13 +1,20 @@
 package message;
 
-/**
- * Created with IntelliJ IDEA.
- * User: G
- * Date: 24.03.2014
- * Time: 23:27
- * To change this template use File | Settings | File Templates.
- */
 public class EncryptedMessage implements BanObject {
+    private Key key;
+
+    public EncryptedMessage(Key key) {
+        this.key = key;
+    }
+
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
     @Override
     public BanObjectType getType() {
         return BanObjectType.ENCRYPTED_MESSAGE;
