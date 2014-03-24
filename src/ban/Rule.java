@@ -18,6 +18,8 @@ public class Rule implements BanObject {
         this.right = right;
     }
 
+
+
     public BanObject getLeft() {
         return left;
     }

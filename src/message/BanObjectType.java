@@ -5,5 +5,7 @@ public enum BanObjectType {
     NONCE,
     PRINCIPAL,
     TIMESTAMP,
+    ENCRYPTED_MESSAGE,
     RULE
+
 }
