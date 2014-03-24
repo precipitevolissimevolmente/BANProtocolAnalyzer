@@ -1,14 +1,16 @@
 package message;
 
-public class Nonce {
-    boolean fresh;
-    private Agent NonceIdentity;
+import static message.BanObjectType.NONCE;
 
-    public Agent getNonceIdentity() {
+public class Nonce implements BanObject {
+    boolean fresh;
+    private Principal NonceIdentity;
+
+    public Principal getNonceIdentity() {
         return NonceIdentity;
     }
 
-    public void setNonceIdentity(Agent nonceIdentity) {
+    public void setNonceIdentity(Principal nonceIdentity) {
         NonceIdentity = nonceIdentity;
     }
 
@@ -18,5 +20,10 @@ public class Nonce {
 
     public boolean isFresh() {
         return fresh;
+    }
+
+    @Override
+    public BanObjectType getType() {
+        return NONCE;
     }
 }

@@ -1,14 +1,16 @@
 package message;
 
-public class Agent {
+import static message.BanObjectType.PRINCIPAL;
+
+public class Principal implements BanObject {
     String identity;
     boolean trustedAuthority;
 
-    public Agent(String identity) {
+    public Principal(String identity) {
         this.identity = identity;
     }
 
-    public Agent(String identity, boolean trustedAuthority) {
+    public Principal(String identity, boolean trustedAuthority) {
         this.identity = identity;
         this.trustedAuthority = trustedAuthority;
     }
@@ -27,5 +29,10 @@ public class Agent {
 
     public void setTrustedAuthority(boolean trustedAuthority) {
         this.trustedAuthority = trustedAuthority;
+    }
+
+    @Override
+    public BanObjectType getType() {
+        return PRINCIPAL;
     }
 }

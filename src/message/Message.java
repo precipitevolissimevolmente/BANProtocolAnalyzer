@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Message {
-    List<Object> messageList = new ArrayList<Object>();
+    List<BanObject> messageList = new ArrayList<BanObject>();
 
-    public List<Object> getMessageList() {
+    public List<BanObject> getMessageList() {
         return messageList;
     }
 
-    public void setMessageList(List<Object> messageList) {
+    public void setMessageList(List<BanObject> messageList) {
         this.messageList = messageList;
     }
 
-    public void add(Object o) {
+    public void add(BanObject o) {
         messageList.add(o);
     }
 
-    public void  removesTheFirstOccurrence(Object o) {
+    public void  removesTheFirstOccurrence(BanObject o) {
         messageList.remove(o);
     }
 

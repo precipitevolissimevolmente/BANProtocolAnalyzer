@@ -1,23 +1,25 @@
 package message;
 
-public class Key {
-    private KeyType keyType;
-    private Agent p;
-    private Agent q;
+import static message.BanObjectType.KEY;
 
-    public Agent getP() {
+public class Key implements BanObject {
+    private KeyType keyType;
+    private Principal p;
+    private Principal q;
+
+    public Principal getP() {
         return p;
     }
 
-    public void setP(Agent p) {
+    public void setP(Principal p) {
         this.p = p;
     }
 
-    public Agent getQ() {
+    public Principal getQ() {
         return q;
     }
 
-    public void setQ(Agent q) {
+    public void setQ(Principal q) {
         this.q = q;
     }
 
@@ -27,5 +29,10 @@ public class Key {
 
     public void setKeyType(KeyType keyType) {
         this.keyType = keyType;
+    }
+
+    @Override
+    public BanObjectType getType() {
+        return KEY;
     }
 }
