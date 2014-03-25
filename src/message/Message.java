@@ -46,6 +46,13 @@ public class Message implements BanObject {
 
     @Override
     public BanObjectType getType() {
-        return MESSAGE;  //To change body of implemented methods use File | Settings | File Templates.
+        return MESSAGE;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "messageList=" + messageList +
+                '}';
     }
 }

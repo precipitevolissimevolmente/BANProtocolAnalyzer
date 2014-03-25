@@ -46,4 +46,26 @@ public class Rule implements BanObject {
     public BanObjectType getType() {
         return RULE;
     }
+
+    @Override
+    public String toString() {
+        String ruleString = left + " " + action + " ";
+
+        if (right.getType().equals(RULE)) {
+            ruleString += getString(right, " ");
+        } else {
+            ruleString += right;
+        }
+
+        return ruleString;
+    }
+
+    private String getString(BanObject rule, String buff) {
+        while (rule.getType().equals(RULE)) {
+            Rule temp = ((Rule) rule);
+            buff += temp.left + " " + temp.getAction();
+            rule = temp.right;
+        }
+        return buff + " " + rule;
+    }
 }

@@ -27,4 +27,9 @@ public class Nonce implements BanObject {
     public BanObjectType getType() {
         return NONCE;
     }
+
+    @Override
+    public String toString() {
+        return fresh ? "Fresh" + NonceIdentity : NonceIdentity.toString();
+    }
 }

@@ -35,4 +35,9 @@ public class Principal implements BanObject {
     public BanObjectType getType() {
         return PRINCIPAL;
     }
+
+    @Override
+    public String toString() {
+        return trustedAuthority ? "TrustedAuthority" + identity : identity;
+    }
 }
