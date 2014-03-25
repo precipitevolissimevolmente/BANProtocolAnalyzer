@@ -6,6 +6,7 @@ public enum BanObjectType {
     PRINCIPAL,
     TIMESTAMP,
     ENCRYPTED_MESSAGE,
-    RULE
+    RULE,
+    MESSAGE
 
 }

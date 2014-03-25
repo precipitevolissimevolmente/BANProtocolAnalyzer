@@ -3,7 +3,9 @@ package message;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Message {
+import static message.BanObjectType.MESSAGE;
+
+public class Message implements BanObject {
     List<BanObject> messageList = new ArrayList<BanObject>();
 
     public List<BanObject> getMessageList() {
@@ -26,4 +28,8 @@ public class Message {
         messageList.remove(index);
     }
 
+    @Override
+    public BanObjectType getType() {
+        return MESSAGE;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

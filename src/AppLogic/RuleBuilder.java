@@ -5,6 +5,7 @@ import ban.Rule;
 import message.BanObjectType;
 import message.Key;
 import message.KeyType;
+import message.Principal;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,19 +16,20 @@ import message.KeyType;
  */
 public class RuleBuilder {
 
-    public void CombineRuleWith2Parameters(Rule rule1, Rule rule2)
-    {
+    public Rule CombineRuleWith2Parameters(Rule rule1, Rule rule2) {
         //Message-meaning rules
 
         //for shared keys
 
-        if(rule1.getLeft().equals(rule2.getLeft()))
-        {
-            if(rule1.getAction().getType().equals(ActionType.BELIEVES) && rule2.getAction().getType().equals(ActionType.SEES))
-            {
-                if( (rule1.getRight().getType().equals(BanObjectType.KEY)) && ((Key)(rule1.getRight())).getKeyType().equals(KeyType.SHARED_KEY))
-                {}
+        if (rule1.getLeft().equals(rule2.getLeft())) {
+            if (rule1.getAction().getType().equals(ActionType.BELIEVES) && rule2.getAction().getType().equals(ActionType.SEES)) {
+                if ((rule1.getRight().getType().equals(BanObjectType.KEY)) && ((Key) (rule1.getRight())).getKeyType().equals(KeyType.SHARED_KEY)) {
+                    if ((((Key) (rule1.getRight())).getQ()).equals(((Principal) rule1.getLeft()))) {
+                       //return new Rule();
+                    }
+                }
             }
         }
+        return null;
     }
 }
