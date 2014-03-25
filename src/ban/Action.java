@@ -1,6 +1,6 @@
 package ban;
 
-public class Action {
+public class Action {  //todo delete
     private ActionType type;
 
     public Action(ActionType type) {

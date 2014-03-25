@@ -9,6 +9,13 @@ public class Message implements BanObject {
     private boolean fresh;
     List<BanObject> messageList = new ArrayList<BanObject>();
 
+    public Message() {
+    }
+
+    public Message(boolean fresh) {
+        this.fresh = fresh;
+    }
+
     public boolean isFresh() {
         return fresh;
     }

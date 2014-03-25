@@ -1,3 +1,4 @@
+import AppLogic.RuleBuilder;
 import ban.Action;
 import ban.ActionType;
 import ban.Rule;
@@ -8,6 +9,7 @@ import java.util.List;
 
 import static ban.ActionType.BELIEVES;
 import static ban.ActionType.CONTROLS;
+import static ban.ActionType.SAID;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,14 +29,15 @@ public class Main {
         messages.add(message1);
         messages.add(message2);
 
-//        if((messages.get(0).getMessageList().get(0)) instanceof Principal) {
-//            System.out.println(((Principal)(messages.get(0).getMessageList().get(0))).getIdentity());
-//        }
+        boolean fresh = true;
+        Message messageX = new Message(fresh);
+        Principal P = new Principal("P");
+        Rule rule1 = new Rule(P, BELIEVES, messageX);
+        Rule rule2 = new Rule(P, BELIEVES, new Rule(new Principal("Q"), SAID, messageX));
 
-        Rule banObject = new Rule(new Principal("A"), new Action(BELIEVES), new Rule(new Principal("B"), new Action(CONTROLS), new Nonce()));
+        Rule rule = RuleBuilder.CombineRuleWith2Parameters(rule1, rule2);
+        System.out.println("--------------");
+        System.out.println(rule);
 
-        if(banObject.getType() == BanObjectType.RULE) {
-            if(banObject.getType() == BanObjectType.PRINCIPAL) {}
-        }
     }
 }

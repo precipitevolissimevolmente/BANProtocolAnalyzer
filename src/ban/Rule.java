@@ -9,16 +9,14 @@ import static message.BanObjectType.RULE;
 public class Rule implements BanObject {
 
     private BanObject left;
-    private Action action;
+    private ActionType action;
     private BanObject right;
 
-    public Rule(BanObject left, Action action, BanObject right) {
+    public Rule(BanObject left, ActionType action, BanObject right) {
         this.left = left;
         this.action = action;
         this.right = right;
     }
-
-
 
     public BanObject getLeft() {
         return left;
@@ -28,11 +26,11 @@ public class Rule implements BanObject {
         this.left = left;
     }
 
-    public Action getAction() {
+    public ActionType getAction() {
         return action;
     }
 
-    public void setAction(Action action) {
+    public void setAction(ActionType action) {
         this.action = action;
     }
 
