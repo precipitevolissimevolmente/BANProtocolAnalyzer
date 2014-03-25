@@ -27,9 +27,9 @@ public class Main {
         messages.add(message1);
         messages.add(message2);
 
-        if((messages.get(0).getMessageList().get(0)) instanceof Principal) {
-            System.out.println(((Principal)(messages.get(0).getMessageList().get(0))).getIdentity());
-        }
+//        if((messages.get(0).getMessageList().get(0)) instanceof Principal) {
+//            System.out.println(((Principal)(messages.get(0).getMessageList().get(0))).getIdentity());
+//        }
 
         Rule banObject = new Rule(new Principal("A"), new Action(BELIEVES), new Rule(new Principal("B"), new Action(CONTROLS), new Nonce()));
 

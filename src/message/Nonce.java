@@ -19,6 +19,7 @@ public class Nonce implements BanObject {
     }
 
     public boolean isFresh() {
+
         return fresh;
     }
 
