@@ -6,7 +6,16 @@ import java.util.List;
 import static message.BanObjectType.MESSAGE;
 
 public class Message implements BanObject {
+    private boolean fresh;
     List<BanObject> messageList = new ArrayList<BanObject>();
+
+    public boolean isFresh() {
+        return fresh;
+    }
+
+    public void setFresh(boolean fresh) {
+        this.fresh = fresh;
+    }
 
     public List<BanObject> getMessageList() {
         return messageList;
