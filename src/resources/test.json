@@ -1,0 +1,46 @@
+{
+    "protocol": [
+        {
+            "sender": "A",
+            "receiver": "B",
+            "encryptedMessage": {
+                "principal": [],
+                "nonce": []
+            }
+        },
+        {
+            "sender": "S",
+            "receiver": "A",
+            "encryptedMessage": {
+                "key": {
+                    "type": "shared",
+                    "between": ["A", "S"]
+                },
+                "message": {
+                    "timestamp": {
+                        "identity": "S"
+                    },
+                    "key": {
+                        "type": "shared",
+                        "between": ["A", "B"]
+                    },
+                    "encryptedMessage": {
+                        "key": {
+                            "type": "shared",
+                            "between": ["B", "S"]
+                        },
+                        "message": {
+                            "timestamp": {
+                                "identity": "S"
+                            },
+                            "key": {
+                                "type": "shared",
+                                "between": ["A", "B"]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
