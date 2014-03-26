@@ -5,15 +5,29 @@ import ban.ActionType;
 import ban.Rule;
 import message.*;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import net.sf.json.JSONObject;
+import net.sf.json.JSONSerializer;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.io.IOUtils;
 
 import static ban.ActionType.BELIEVES;
 import static ban.ActionType.CONTROLS;
 import static ban.ActionType.SAID;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+//        InputStream is =
+//                Main.class.getResourceAsStream("sample-json.txt");
+//        String jsonTxt = IOUtils.toString( is );
+//
+//        JSONObject json = (JSONObject) JSONSerializer.toJSON( jsonTxt );
+
         List<Message> messages = new ArrayList<Message>();
         Message message1 = new Message();
         Nonce nonce1 = new Nonce();
@@ -36,11 +50,10 @@ public class Main {
         Rule rule1 = new Rule(P, BELIEVES, messageX);
         Rule rule2 = new Rule(P, BELIEVES, new Rule(new Principal("Q"), SAID, messageX));
 
-        Rule rule = RuleBuilder.CombineRuleWith2Parameters(rule1, rule2);
+        RuleBuilder.CombineRuleWith2Parameters(rule1, rule2);
 
         System.out.println(RuleContainer.Rules.size());
         System.out.println("--------------");
-        System.out.println(rule);
 
     }
 }

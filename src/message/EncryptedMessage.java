@@ -1,16 +1,7 @@
 package message;
 
-public class EncryptedMessage implements BanObject {
-    private Message message;
+public class EncryptedMessage extends Message {
     private Key key;
-
-    public Message getMessage() {
-        return message;
-    }
-
-    public void setMessage(Message message) {
-        this.message = message;
-    }
 
     public EncryptedMessage(Key key) {
         this.key = key;
