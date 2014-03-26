@@ -1,9 +1,10 @@
 package AppLogic;
 
-import ban.Action;
-import ban.ActionType;
 import ban.Rule;
-import message.*;
+import message.BanObjectType;
+import message.EncryptedMessage;
+import message.Key;
+import message.Message;
 
 import static ban.ActionType.*;
 import static message.BanObjectType.*;
@@ -37,6 +38,28 @@ public class RuleBuilder {
                     }
                 }
             }
+            //P believes public Q, P sees {X}_shared_K => P SEES X
+            if (rule1.getAction().equals(BELIEVES) && rule2.getAction().equals(SEES)) {
+                if(rule2.getRight().getType().equals(BanObjectType.ENCRYPTED_MESSAGE)){
+                    if ((rule1.getRight().getType().equals(BanObjectType.KEY))
+                            &&((Key) (rule1.getRight())).getKeyType().equals(SHARED_KEY)
+                            && (((EncryptedMessage) (rule2.getRight())).getKey().getKeyType().equals(SHARED_KEY))
+                            )
+                    {
+                        if ((((Key) (rule1.getRight())).getQ()).equals(rule1.getLeft()))
+                        {
+                            return new Rule(rule1.getLeft(),SEES,
+                                    ((EncryptedMessage)(rule2.getRight())).getMessage());
+                        }
+                        else if ((((Key) (rule1.getRight())).getP()).equals(rule1.getLeft()))
+                        {
+                            return new Rule(rule1.getLeft(),SEES,
+                                    ((EncryptedMessage)(rule2.getRight())).getMessage());
+                        }
+                    }
+                }
+            }
+
 
             /**
              *  Nonce-verification rule
@@ -77,6 +100,27 @@ public class RuleBuilder {
                                         ((EncryptedMessage)(rule2.getRight())).getMessage()));
                             }
                     }
+            }
+
+            //P believes public Q, P sees {X}_private_K => P SEES X
+            if ((rule1.getAction().equals(BELIEVES))&& rule2.getAction().equals(SEES))
+            {
+                if(rule1.getRight().getType().equals(BanObjectType.KEY)
+                        && ((Key) (rule1.getRight())).getKeyType().equals(PUBLIC_KEY)
+                        && (rule2.getType().equals(ENCRYPTED_MESSAGE))
+                        && ((EncryptedMessage)(rule1.getRight())).getKey().getKeyType().equals(PRIVATE_KEY))
+                {
+                    if(((Key)(rule1.getRight())).getQ()!=null)
+                    {
+                        return new Rule(rule1.getLeft(),SEES,
+                                ((EncryptedMessage)(rule2.getRight())).getMessage());
+                    }
+                    if(((Key)(rule1.getRight())).getP()!=null)
+                    {
+                        return new Rule(rule1.getLeft(),SEES,
+                                ((EncryptedMessage)(rule2.getRight())).getMessage());
+                    }
+                }
             }
 
             //Jurisdiction
