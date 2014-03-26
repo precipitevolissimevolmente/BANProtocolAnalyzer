@@ -1,4 +1,5 @@
 import AppLogic.RuleBuilder;
+import AppLogic.RuleContainer;
 import ban.Action;
 import ban.ActionType;
 import ban.Rule;
@@ -36,6 +37,8 @@ public class Main {
         Rule rule2 = new Rule(P, BELIEVES, new Rule(new Principal("Q"), SAID, messageX));
 
         Rule rule = RuleBuilder.CombineRuleWith2Parameters(rule1, rule2);
+
+        System.out.println(RuleContainer.Rules.size());
         System.out.println("--------------");
         System.out.println(rule);
 
