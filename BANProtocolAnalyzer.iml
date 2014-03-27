@@ -9,7 +9,12 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="guava-16.0.1" level="project" />
     <orderEntry type="library" name="json-lib-2.4-jdk15" level="project" />
-    <orderEntry type="library" name="commons-io-2.4-javadoc" level="project" />
+    <orderEntry type="library" name="ezmorph-1.0.6" level="project" />
+    <orderEntry type="library" name="commons-logging-1.1" level="project" />
+    <orderEntry type="library" name="commons-lang-2" level="project" />
+    <orderEntry type="library" name="commons-beanutils-1.8" level="project" />
+    <orderEntry type="library" name="commons-io-2" level="project" />
+    <orderEntry type="library" name="commons-collections-3.2" level="project" />
   </component>
 </module>
 

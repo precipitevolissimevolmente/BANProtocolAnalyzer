@@ -4,8 +4,7 @@
             "sender": "A",
             "receiver": "B",
             "encryptedMessage": {
-                "principal": [],
-                "nonce": []
+                "principal": ["A"]
             }
         },
         {

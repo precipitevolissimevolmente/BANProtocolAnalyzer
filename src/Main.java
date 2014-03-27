@@ -10,11 +10,11 @@ import java.io.InputStream;
 
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
+import org.apache.commons.io.IOUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.IOUtils;
 
 import static ban.ActionType.BELIEVES;
 import static ban.ActionType.CONTROLS;
@@ -22,11 +22,12 @@ import static ban.ActionType.SAID;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-//        InputStream is =
-//                Main.class.getResourceAsStream("sample-json.txt");
-//        String jsonTxt = IOUtils.toString( is );
-//
-//        JSONObject json = (JSONObject) JSONSerializer.toJSON( jsonTxt );
+        InputStream is =
+                Main.class.getResourceAsStream("/resources/test.json");
+        String jsonTxt = IOUtils.toString(is);
+
+        JSONObject jsonObject = (JSONObject) JSONSerializer.toJSON(jsonTxt);
+
 
         List<Message> messages = new ArrayList<Message>();
         Message message1 = new Message();
