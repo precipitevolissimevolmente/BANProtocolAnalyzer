@@ -1,5 +1,5 @@
 {
-    "protocol": [
+    "protocolMessages": [
         {
             "sender": "S",
             "receiver": "A",

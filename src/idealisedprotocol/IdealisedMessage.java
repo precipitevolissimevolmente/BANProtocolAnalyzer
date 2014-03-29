@@ -6,7 +6,7 @@ import message.Principal;
 public class IdealisedMessage {
     private Principal sender;
     private Principal receiver;
-    private Message BanObject;
+    private Message message;
 
     public Principal getSender() {
         return sender;
@@ -24,11 +24,11 @@ public class IdealisedMessage {
         this.receiver = receiver;
     }
 
-    public Message getBanObject() {
-        return BanObject;
+    public Message getMessage() {
+        return message;
     }
 
-    public void setBanObject(Message banObject) {
-        BanObject = banObject;
+    public void setMessage(Message message) {
+        this.message = message;
     }
 }
