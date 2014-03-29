@@ -1,49 +1,21 @@
 import AppLogic.RuleBuilder;
 import AppLogic.RuleContainer;
-import ban.Action;
-import ban.ActionType;
 import ban.Rule;
-import message.*;
+import idealisedprotocol.IdealisedMessage;
+import json.BuildMessagesFromJSON;
+import message.Message;
+import message.Principal;
 
 import java.io.IOException;
-import java.io.InputStream;
-
-import net.sf.json.JSONObject;
-import net.sf.json.JSONSerializer;
-import org.apache.commons.io.IOUtils;
-
-import java.util.ArrayList;
 import java.util.List;
 
-
 import static ban.ActionType.BELIEVES;
-import static ban.ActionType.CONTROLS;
 import static ban.ActionType.SAID;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        InputStream is =
-                Main.class.getResourceAsStream("/resources/test.json");
-        String jsonTxt = IOUtils.toString(is);
-
-        JSONObject jsonObject = (JSONObject) JSONSerializer.toJSON(jsonTxt);
-
-
-        List<Message> messages = new ArrayList<Message>();
-        Message message1 = new Message();
-        Nonce nonce1 = new Nonce();
-        message1.add(new Principal("A"));
-        message1.add(nonce1);
-        message1.add(new Key());
-        message1.removesTheFirstOccurrence(nonce1);
-        System.out.println("Size:" + message1.getMessageList().size());
-
-        Message message2 = new Message();
-        message1.add(new Principal("B"));
-        message1.add(new Principal("S"));
-
-        messages.add(message1);
-        messages.add(message2);
+        BuildMessagesFromJSON fromJSON = new BuildMessagesFromJSON();
+        List<IdealisedMessage> build = fromJSON.build("/resources/Kerberos.json");
 
         boolean fresh = true;
         Message messageX = new Message(fresh);

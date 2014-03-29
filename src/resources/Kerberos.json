@@ -1,0 +1,105 @@
+{
+    "protocol": [
+        {
+            "sender": "S",
+            "receiver": "A",
+            "messages": [
+                {
+                    "encryptedMessage": {
+                        "key": {
+                            "type": "shared",
+                            "between": ["A", "S"]
+                        },
+                        "message": {
+                            "timestamp": {
+                                "identity": "S"
+                            },
+                            "key": {
+                                "type": "shared",
+                                "between": ["A", "B"]
+                            },
+                            "encryptedMessage": {
+                                "key": {
+                                    "type": "shared",
+                                    "between": ["B", "S"]
+                                },
+                                "message": {
+                                    "timestamp": {
+                                        "identity": "S"
+                                    },
+                                    "key": {
+                                        "type": "shared",
+                                        "between": ["A", "B"]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "sender": "A",
+            "receiver": "B",
+            "messages": [
+                {
+                    "encryptedMessage" : {
+                        "key": {
+                            "type": "shared",
+                            "between": ["B", "S"]
+                        },
+                        "message": {
+                            "timestamp": {
+                                "identity": "S"
+                            },
+                            "key": {
+                                "type": "shared",
+                                "between": ["A", "B"]
+                            }
+                        }
+                    }
+                },
+                {
+                    "encryptedMessage" : {
+                        "key": {
+                            "type": "shared",
+                            "between": ["A", "B"]
+                        },
+                        "message": {
+                            "timestamp": {
+                                "identity": "A"
+                            },
+                            "key": {
+                                "type": "shared",
+                                "between": ["A", "B"]
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "sender": "B",
+            "receiver": "A",
+            "messages": [
+                {
+                    "encryptedMessage" : {
+                        "key": {
+                            "type": "shared",
+                            "between": ["A", "B"]
+                        },
+                        "message": {
+                            "timestamp": {
+                                "identity": "A"
+                            },
+                            "key": {
+                                "type": "shared",
+                                "between": ["A", "B"]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
