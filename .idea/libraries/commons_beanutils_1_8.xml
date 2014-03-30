@@ -3,9 +3,7 @@
     <CLASSES>
       <root url="file://$PROJECT_DIR$/lib/commons-beanutils-1.8.0" />
     </CLASSES>
-    <JAVADOC>
-      <root url="file://$PROJECT_DIR$/lib/commons-beanutils-1.8.0/apidocs" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
       <root url="file://$PROJECT_DIR$/lib/commons-beanutils-1.8.0" />
     </SOURCES>

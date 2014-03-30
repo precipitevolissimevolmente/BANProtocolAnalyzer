@@ -1,15 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/json/BuildMessagesFromJSON.java" afterPath="$PROJECT_DIR$/src/json/BuildMessagesFromJSON.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/EncryptedMessage.java" afterPath="$PROJECT_DIR$/src/message/EncryptedMessage.java" />
+    <list default="true" id="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" name="Default" comment="libs">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/commons-beanutils-1.8.0-javadoc.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/commons-beanutils-1.8.0-sources.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/commons-beanutils-1.8.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/commons-beanutils-bean-collections-1.8.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/commons-beanutils-core-1.8.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/commons-collections-3.2.1-javadoc.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/commons-collections-3.2.1-sources.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/commons-collections-3.2.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/commons-collections-testframework-3.2.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/commons-io-2.4-javadoc.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/commons-io-2.4-sources.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/commons-io-2.4-test-sources.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/commons-io-2.4-tests.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/commons-io-2.4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-lang-2.5/commons-lang-2.5-javadoc.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-lang-2.5/commons-lang-2.5-sources.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-lang-2.5/commons-lang-2.5.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/commons-logging-1.1.1-javadoc.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/commons-logging-1.1.1-sources.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/commons-logging-1.1.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/commons-logging-adapters-1.1.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/commons-logging-api-1.1.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/commons-logging-tests.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/ezmorph-1.0.6.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/json-lib-2.4-jdk15.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-lang-2.5/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/NOTICE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/NOTICE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/NOTICE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-lang-2.5/NOTICE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/NOTICE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/README.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/RELEASE-NOTES.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/RELEASE-NOTES.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/RELEASE-NOTES.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-lang-2.5/RELEASE-NOTES.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/RELEASE-NOTES.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_beanutils_1_8.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_beanutils_1_8.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_collections_3_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_collections_3_2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_io_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_io_2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_lang_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_lang_2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_logging_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_logging_1_1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BANProtocolAnalyzer.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Agent.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395693374778" ignored="false" />
-    <file path="/Dummy.txt" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396203124061" ignored="false" />
+    <file path="/Dummy.txt" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396203358367" ignored="false" />
     <file path="/Nonce.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395779753708" ignored="false" />
     <file path="/Main.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396112028196" ignored="false" />
     <file path="/Key.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395693298046" ignored="false" />
@@ -136,7 +180,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="583" selection-end="583" vertical-scroll-proportion="0.24637681">
+            <state line="32" column="46" selection-start="1021" selection-end="1021" vertical-scroll-proportion="0.4651163">
               <folding />
             </state>
           </provider>
@@ -189,7 +233,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/ban/BanObject.java" />
         <option value="$PROJECT_DIR$/src/message/EncriptedMessage.java" />
         <option value="$PROJECT_DIR$/src/message/BanObjectType.java" />
         <option value="$PROJECT_DIR$/src/ban/Action.java" />
@@ -205,6 +248,7 @@
         <option value="$PROJECT_DIR$/src/idealisedprotocol/IdealisedMessage.java" />
         <option value="$PROJECT_DIR$/src/message/EncryptedMessage.java" />
         <option value="$PROJECT_DIR$/src/json/BuildMessagesFromJSON.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -381,6 +425,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="AppLogic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BANProtocolAnalyzer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BANProtocolAnalyzer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -653,7 +711,11 @@
       <created>1396203130278</created>
       <updated>1396203130278</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="add JSON prop">
+      <created>1396203167333</created>
+      <updated>1396203167333</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -678,9 +740,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1542" height="916" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32760897" sideWeight="0.4972973" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32760897" sideWeight="0.4972973" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -744,7 +806,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="some config" />
+    <option name="LAST_COMMIT_MESSAGE" value="libs" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -775,6 +837,8 @@
     <MESSAGE value="add idealised messages for Kerberos in JSON" />
     <MESSAGE value="complete builder for principals" />
     <MESSAGE value="some config" />
+    <MESSAGE value="add JSON prop" />
+    <MESSAGE value="libs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -787,11 +851,6 @@
     <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="117" selection-start="988" selection-end="988" vertical-scroll-proportion="-1.7708334" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ban/Action.java">
@@ -885,9 +944,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1848" column="25" selection-start="292367" selection-end="292367" vertical-scroll-proportion="0.14206128">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="583" selection-end="583" vertical-scroll-proportion="0.24637681">
+        <state line="32" column="46" selection-start="1021" selection-end="1021" vertical-scroll-proportion="0.4651163">
           <folding />
         </state>
       </provider>
@@ -956,7 +1022,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>commons-collections-3.2</last-edited>
+          <last-edited>commons-beanutils-1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
