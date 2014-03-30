@@ -4,6 +4,9 @@ package json;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import idealisedprotocol.IdealisedMessage;
+import message.BanObject;
+import message.EncryptedMessage;
+import message.Message;
 import message.Principal;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -21,6 +24,8 @@ import static com.google.common.collect.Iterables.transform;
 
 public class BuildMessagesFromJSON {
     private List<Principal> principals = new ArrayList<Principal>();
+    private static final String ENCRYPTED_MESSAGE = "encryptedMessage";
+
 
     public List<IdealisedMessage> build(String jsonFile) throws IOException {
         List<IdealisedMessage> idealisedMessages = new ArrayList<IdealisedMessage>();
@@ -37,11 +42,26 @@ public class BuildMessagesFromJSON {
             JSONObject jsonIdealisedMessage = protocolMessages.getJSONObject(i);
             idealisedMessage.setSender(getSender(jsonIdealisedMessage));
             idealisedMessage.setReceiver(getReceiver(jsonIdealisedMessage));
-//            idealisedMessage.setMessage(ge);
+            idealisedMessage.setMessage(getMessages(jsonIdealisedMessage.getJSONArray("messages")));
             idealisedMessages.add(idealisedMessage);
         }
 
         return idealisedMessages;
+    }
+
+    private Message getMessages(JSONArray messages) {
+        for (int i = 0; i < messages.size(); i++) {
+            buildMessage(messages.getJSONObject(i));
+        }
+        return null;  //To change body of created methods use File | Settings | File Templates.
+    }
+
+    private BanObject buildMessage(JSONObject jsonObject) {
+//        if(jsonObject.has(ENCRYPTED_MESSAGE)) {
+//            new EncryptedMessage();
+//        }
+
+        return null;
     }
 
     private Principal getSender(JSONObject jsonIdealisedMessage) {
@@ -57,7 +77,7 @@ public class BuildMessagesFromJSON {
     }
 
     private Principal getPrincipal(String principalIdentity, boolean trustedAuthority) {
-        if(contains(transform(principals, principalToIdentity()), principalIdentity)) {
+        if (contains(transform(principals, principalToIdentity()), principalIdentity)) {
             return find(principals, new FindPrincipal(principalIdentity));
         }
         Principal newPrincipal = new Principal(principalIdentity, trustedAuthority);

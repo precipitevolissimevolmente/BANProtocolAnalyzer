@@ -4,14 +4,12 @@
     <list default="true" id="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/json/BuildMessagesFromJSON.java" afterPath="$PROJECT_DIR$/src/json/BuildMessagesFromJSON.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/message/EncryptedMessage.java" afterPath="$PROJECT_DIR$/src/message/EncryptedMessage.java" />
-    </list>
-    <list id="3a4994b1-d671-47d7-860d-a0a31d230099" name="do not commit" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BANProtocolAnalyzer.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Agent.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395693374778" ignored="false" />
-    <file path="/Dummy.txt" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396202961340" ignored="false" />
+    <file path="/Dummy.txt" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396203124061" ignored="false" />
     <file path="/Nonce.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395779753708" ignored="false" />
     <file path="/Main.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396112028196" ignored="false" />
     <file path="/Key.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395693298046" ignored="false" />
@@ -32,7 +30,6 @@
     <file path="/a.dummy" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395869151230" ignored="false" />
     <file path="/fragment.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396111318851" ignored="false" />
     <file path="/BuildMessagesFromJSON.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396113662393" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396126243173" ignored="false" />
     <file path="/Kerberos.json" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396109113450" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -577,7 +574,6 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" name="Default" comment="" />
-      <changelist id="3a4994b1-d671-47d7-860d-a0a31d230099" name="do not commit" comment="" />
       <created>1395597067518</created>
       <updated>1395597067518</updated>
     </task>
@@ -653,7 +649,11 @@
       <created>1396112978603</created>
       <updated>1396112978603</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="some config">
+      <created>1396203130278</created>
+      <updated>1396203130278</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -744,7 +744,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete builder for principals" />
+    <option name="LAST_COMMIT_MESSAGE" value="some config" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -774,6 +774,7 @@
     <MESSAGE value="add JSON LIB" />
     <MESSAGE value="add idealised messages for Kerberos in JSON" />
     <MESSAGE value="complete builder for principals" />
+    <MESSAGE value="some config" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
