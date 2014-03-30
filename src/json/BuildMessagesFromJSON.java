@@ -4,10 +4,7 @@ package json;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import idealisedprotocol.IdealisedMessage;
-import message.BanObject;
-import message.EncryptedMessage;
-import message.Message;
-import message.Principal;
+import message.*;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
@@ -24,6 +21,7 @@ import static com.google.common.collect.Iterables.transform;
 
 public class BuildMessagesFromJSON {
     private List<Principal> principals = new ArrayList<Principal>();
+    private List<Key> keys = new ArrayList<Key>();
     private static final String ENCRYPTED_MESSAGE = "encryptedMessage";
 
 
@@ -49,19 +47,52 @@ public class BuildMessagesFromJSON {
         return idealisedMessages;
     }
 
-    private Message getMessages(JSONArray messages) {
-        for (int i = 0; i < messages.size(); i++) {
-            buildMessage(messages.getJSONObject(i));
+    private BanObject getMessages(JSONArray messages) {
+        if (messages.size() == 1) {
+            return buildMessage(messages.getJSONObject(0));
         }
-        return null;  //To change body of created methods use File | Settings | File Templates.
+
+        Message message = new Message();
+        for (int i = 0; i < messages.size(); i++) {
+            BanObject banObject = buildMessage(messages.getJSONObject(i));
+            message.add(banObject);
+        }
+        return message;
     }
 
     private BanObject buildMessage(JSONObject jsonObject) {
-//        if(jsonObject.has(ENCRYPTED_MESSAGE)) {
-//            new EncryptedMessage();
-//        }
+        if (jsonObject.getString("type").equalsIgnoreCase(ENCRYPTED_MESSAGE)) {
+            JSONObject keyJSON = jsonObject.getJSONObject("key");
+            Key key = getKey(keyJSON);
+            return new EncryptedMessage(key);
+        }
 
         return null;
+    }
+
+    private Key getKey(JSONObject keyJSON) {
+        String keyTypeJSON = keyJSON.getString("keyType");
+        if (KeyType.SHARED_KEY.name().equalsIgnoreCase(keyTypeJSON)) {
+            JSONArray keyPrincipalsJSON = keyJSON.getJSONArray("between");
+            Principal p = getPrincipal(keyPrincipalsJSON.getString(0), false);
+            Principal q = getPrincipal(keyPrincipalsJSON.getString(1), false);
+            Key key = new Key();
+            key.setKeyType(KeyType.SHARED_KEY);
+            key.setP(p);
+            key.setQ(q);
+
+            return getNewOrExistentKey(key);
+        }
+
+        return null;
+    }
+
+    private Key getNewOrExistentKey(Key key) {
+        if(keys.contains(key)) {
+            return find(keys, new FindKey(key));
+        }
+        keys.add(key);
+        return key;
     }
 
     private Principal getSender(JSONObject jsonIdealisedMessage) {
@@ -92,6 +123,19 @@ public class BuildMessagesFromJSON {
                 return from.getIdentity();
             }
         };
+    }
+
+    public class FindKey implements Predicate<Key> {
+        private Key keyToFind;
+
+        public FindKey(Key keyToFind) {
+            this.keyToFind = keyToFind;
+        }
+
+        @Override
+        public boolean apply(Key key) {
+            return key.getKeyType().equals(keyToFind.getKeyType()) && key.getP().equals(keyToFind.getP()) && key.getQ().equals(keyToFind.getQ());
+        }
     }
 
     public class FindPrincipal implements Predicate<Principal> {

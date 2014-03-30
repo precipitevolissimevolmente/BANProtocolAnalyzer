@@ -5,36 +5,40 @@
             "receiver": "A",
             "messages": [
                 {
-                    "encryptedMessage": {
-                        "key": {
-                            "type": "shared",
-                            "between": ["A", "S"]
+                    "type": "encryptedMessage",
+                    "key": {
+                        "keyType": "SHARED_KEY",
+                        "between": ["A", "S"]
+                    },
+                    "message": [
+                        {
+                            "type": "timestamp",
+                            "identity": "S"
                         },
-                        "message": {
-                            "timestamp": {
-                                "identity": "S"
-                            },
+                        {
+                            "type": "key",
+                            "keyType": "SHARED_KEY",
+                            "between": ["A", "B"]
+                        },
+                        {
+                            "type": "encryptedMessage",
                             "key": {
-                                "type": "shared",
-                                "between": ["A", "B"]
+                                "keyType": "SHARED_KEY",
+                                "between": ["B", "S"]
                             },
-                            "encryptedMessage": {
-                                "key": {
-                                    "type": "shared",
-                                    "between": ["B", "S"]
+                            "message": [
+                                {
+                                    "type": "timestamp",
+                                    "identity": "S"
                                 },
-                                "message": {
-                                    "timestamp": {
-                                        "identity": "S"
-                                    },
-                                    "key": {
-                                        "type": "shared",
-                                        "between": ["A", "B"]
-                                    }
+                                {
+                                    "type": "key",
+                                    "keyType": "SHARED_KEY",
+                                    "between": ["A", "B"]
                                 }
-                            }
+                            ]
                         }
-                    }
+                    ]
                 }
             ]
         },
@@ -43,38 +47,40 @@
             "receiver": "B",
             "messages": [
                 {
-                    "encryptedMessage" : {
-                        "key": {
-                            "type": "shared",
-                            "between": ["B", "S"]
+                    "type": "encryptedMessage",
+                    "key": {
+                        "keyType": "SHARED_KEY",
+                        "between": ["B", "S"]
+                    },
+                    "message": [
+                        {
+                            "type": "timestamp",
+                            "identity": "S"
                         },
-                        "message": {
-                            "timestamp": {
-                                "identity": "S"
-                            },
-                            "key": {
-                                "type": "shared",
-                                "between": ["A", "B"]
-                            }
+                        {
+                            "type": "key",
+                            "keyType": "SHARED_KEY",
+                            "between": ["A", "B"]
                         }
-                    }
+                    ]
                 },
                 {
-                    "encryptedMessage" : {
-                        "key": {
-                            "type": "shared",
-                            "between": ["A", "B"]
+                    "type": "encryptedMessage",
+                    "key": {
+                        "keyType": "SHARED_KEY",
+                        "between": ["A", "B"]
+                    },
+                    "message": [
+                        {
+                            "type": "timestamp",
+                            "identity": "A"
                         },
-                        "message": {
-                            "timestamp": {
-                                "identity": "A"
-                            },
-                            "key": {
-                                "type": "shared",
-                                "between": ["A", "B"]
-                            }
+                        {
+                            "type": "key",
+                            "keyType": "SHARED_KEY",
+                            "between": ["A", "B"]
                         }
-                    }
+                    ]
                 }
             ]
         },
@@ -83,21 +89,23 @@
             "receiver": "A",
             "messages": [
                 {
-                    "encryptedMessage" : {
-                        "key": {
-                            "type": "shared",
-                            "between": ["A", "B"]
+                    "type": "encryptedMessage",
+                    "key": {
+                        "keyType": "SHARED_KEY",
+                        "between": ["A", "B"]
+                    },
+                    "message": [
+                        {
+                            "type": "timestamp",
+                            "identity": "A"
+
                         },
-                        "message": {
-                            "timestamp": {
-                                "identity": "A"
-                            },
-                            "key": {
-                                "type": "shared",
-                                "between": ["A", "B"]
-                            }
+                        {
+                            "type": "key",
+                            "keyType": "SHARED_KEY",
+                            "between": ["A", "B"]
                         }
-                    }
+                    ]
                 }
             ]
         }

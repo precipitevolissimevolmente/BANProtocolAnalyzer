@@ -1,12 +1,13 @@
 package idealisedprotocol;
 
+import message.BanObject;
 import message.Message;
 import message.Principal;
 
 public class IdealisedMessage {
     private Principal sender;
     private Principal receiver;
-    private Message message;
+    private BanObject message;
 
     public Principal getSender() {
         return sender;
@@ -24,11 +25,11 @@ public class IdealisedMessage {
         this.receiver = receiver;
     }
 
-    public Message getMessage() {
+    public BanObject getMessage() {
         return message;
     }
 
-    public void setMessage(Message message) {
+    public void setMessage(BanObject message) {
         this.message = message;
     }
 }

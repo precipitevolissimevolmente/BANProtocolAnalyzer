@@ -35,4 +35,15 @@ public class Key implements BanObject {
     public BanObjectType getType() {
         return KEY;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Key) {
+        if((((Key)obj).getKeyType().equals(this.getKeyType()))
+                && (((Key)obj).getP().equals(this.getP())) && (((Key)obj).getQ().equals(this.getQ()))) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
