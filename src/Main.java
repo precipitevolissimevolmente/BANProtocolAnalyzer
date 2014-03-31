@@ -16,7 +16,9 @@ import static ban.ActionType.SAID;
 public class Main {
     public static void main(String[] args) throws IOException {
         BuildMessagesFromJSON fromJSON = new BuildMessagesFromJSON();
-        List<IdealisedMessage> idealisedMessages = fromJSON.build("/resources/Kerberos.json");
+//        List<IdealisedMessage> idealisedMessages = fromJSON.build("/resources/Kerberos.json");
+
+        List<IdealisedMessage> idealisedMessages = fromJSON.build("/resources/Needham-Schroeder-Shared-keys.json");
 
         boolean fresh = true;
         Message messageX = new Message(fresh);

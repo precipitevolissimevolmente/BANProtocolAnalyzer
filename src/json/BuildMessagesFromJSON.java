@@ -21,6 +21,7 @@ public class BuildMessagesFromJSON {
     private List<Principal> principals = new ArrayList<>();
     private List<Key> keys = new ArrayList<>();
     private List<TimeStmp> timeStamps = new ArrayList<>();
+    private List<Nonce> nonces = new ArrayList<>();
     private static final String ENCRYPTED_MESSAGE = "encryptedMessage";
 
 
@@ -77,6 +78,9 @@ public class BuildMessagesFromJSON {
                 case "timestamp":
                     message.add(getTimeStamp(messageJSONArray.getJSONObject(j)));
                     break;
+                case "nonce":
+                    message.add(getNonce(messageJSONArray.getJSONObject(j)));
+                    break;
                 case "encryptedmessage":
                     message.add(getEncryptedMessage(messageJSONArray.getJSONObject(j)));
                     break;
@@ -91,6 +95,16 @@ public class BuildMessagesFromJSON {
         EncryptedMessage message = new EncryptedMessage(getKey(keyJSON));
         message.setMessage(getMessage(jsonObject.getJSONArray("message")));
         return message;
+    }
+
+    private BanObject getNonce(JSONObject jsonObject) {
+        Principal identity = getPrincipal(jsonObject.getString("identity"), false);
+        boolean fresh = jsonObject.has("fresh");
+        Nonce nonce = new Nonce();
+        nonce.setNonceIdentity(identity);
+        nonce.setFresh(fresh);
+
+        return getNewOrExistentNonce(nonce);
     }
 
     private BanObject getTimeStamp(JSONObject jsonObject) {
@@ -109,15 +123,24 @@ public class BuildMessagesFromJSON {
             JSONArray keyPrincipalsJSON = keyJSON.getJSONArray("between");
             Principal p = getPrincipal(keyPrincipalsJSON.getString(0), false);
             Principal q = getPrincipal(keyPrincipalsJSON.getString(1), false);
+            boolean fresh = keyJSON.has("fresh");
             Key key = new Key();
             key.setKeyType(KeyType.SHARED_KEY);
             key.setP(p);
             key.setQ(q);
-
+            key.setFresh(fresh);
             return getNewOrExistentKey(key);
         }
 
         return null;
+    }
+
+    private BanObject getNewOrExistentNonce(Nonce nonce) {
+        if(nonces.contains(nonce)) {
+            return find(nonces, new FindNonce(nonce));
+        }
+        nonces.add(nonce);
+        return nonce;
     }
 
     private BanObject getNewOrExistentTimeStamp(TimeStmp timeStmp) {
@@ -179,6 +202,18 @@ public class BuildMessagesFromJSON {
         }
     }
 
+    private class FindNonce implements Predicate<Nonce> {
+        private Nonce nonceToFind;
+
+        public FindNonce(Nonce nonceToFind) {
+            this.nonceToFind = nonceToFind;
+        }
+
+        @Override
+        public boolean apply(Nonce nonce) {
+            return this.nonceToFind.equals(nonce);
+        }
+    }
 
     public class FindKey implements Predicate<Key> {
         private Key keyToFind;

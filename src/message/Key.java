@@ -6,6 +6,15 @@ public class Key implements BanObject {
     private KeyType keyType;
     private Principal p;
     private Principal q;
+    private boolean fresh;
+
+    public boolean isFresh() {
+        return fresh;
+    }
+
+    public void setFresh(boolean fresh) {
+        this.fresh = fresh;
+    }
 
     public Principal getP() {
         return p;

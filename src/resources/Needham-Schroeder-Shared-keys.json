@@ -1,0 +1,111 @@
+{
+    "protocolMessages": [
+        {
+            "sender": "S",
+            "receiver": "A",
+            "messages": [
+                {
+                    "type": "encryptedMessage",
+                    "key": {
+                        "keyType": "SHARED_KEY",
+                        "between": ["A", "S"]
+                    },
+                    "message": [
+                        {
+                            "type": "nonce",
+                            "identity": "A"
+                        },
+                        {
+                            "type": "key",
+                            "keyType": "SHARED_KEY",
+                            "between": ["A", "B"],
+                            "fresh" : ""
+                        },
+                        {
+                            "type": "encryptedMessage",
+                            "key": {
+                                "keyType": "SHARED_KEY",
+                                "between": ["B", "S"]
+                            },
+                            "message": [
+                                {
+                                    "type": "key",
+                                    "keyType": "SHARED_KEY",
+                                    "between": ["A", "B"]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sender": "A",
+            "receiver": "B",
+            "messages": [
+                {
+                    "type": "encryptedMessage",
+                    "key": {
+                        "keyType": "SHARED_KEY",
+                        "between": ["B", "S"]
+                    },
+                    "message": [
+                        {
+                            "type": "key",
+                            "keyType": "SHARED_KEY",
+                            "between": ["A", "B"]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sender": "B",
+            "receiver": "A",
+            "messages": [
+                {
+                    "type": "encryptedMessage",
+                    "key": {
+                        "keyType": "SHARED_KEY",
+                        "between": ["A", "B"]
+                    },
+                    "message": [
+                        {
+                            "type": "nonce",
+                            "identity": "B"
+                        },
+                        {
+                            "type": "key",
+                            "keyType": "SHARED_KEY",
+                            "between": ["A", "B"]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sender": "A",
+            "receiver": "B",
+            "messages": [
+                {
+                    "type": "encryptedMessage",
+                    "key": {
+                        "keyType": "SHARED_KEY",
+                        "between": ["A", "B"]
+                    },
+                    "message": [
+                        {
+                            "type": "nonce",
+                            "identity": "B"
+                        },
+                        {
+                            "type": "key",
+                            "keyType": "SHARED_KEY",
+                            "between": ["A", "B"]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

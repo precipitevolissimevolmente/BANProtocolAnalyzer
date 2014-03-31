@@ -32,4 +32,15 @@ public class Nonce implements BanObject {
     public String toString() {
         return fresh ? "Fresh" + NonceIdentity : NonceIdentity.toString();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Nonce) {
+            if ((((Nonce) obj).getNonceIdentity().equals(this.getNonceIdentity())) &&
+                    (((Nonce) obj).isFresh() == this.isFresh())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

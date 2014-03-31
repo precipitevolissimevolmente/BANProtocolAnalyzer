@@ -12,7 +12,7 @@ public class TimeStmp extends Nonce {
     public boolean equals(Object obj) {
         if (obj instanceof TimeStmp) {
             if ((((TimeStmp) obj).getNonceIdentity().equals(this.getNonceIdentity())) &&
-                    (((TimeStmp) obj).getType().equals(this.getType()))) {
+                    (((TimeStmp) obj).isFresh() == this.isFresh())) {
                 return true;
             }
         }
