@@ -1,8 +1,12 @@
 import AppLogic.RuleBuilder;
 import AppLogic.RuleContainer;
+import ban.ActionType;
 import ban.Rule;
 import idealisedprotocol.IdealisedMessage;
+import idealisedprotocol.IdealisedMessagesUtil;
 import json.BuildMessagesFromJSON;
+import message.BanObject;
+import message.BanObjectType;
 import message.Message;
 import message.Principal;
 
@@ -12,13 +16,13 @@ import java.util.List;
 
 import static ban.ActionType.BELIEVES;
 import static ban.ActionType.SAID;
+import static ban.ActionType.SEES;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        BuildMessagesFromJSON fromJSON = new BuildMessagesFromJSON();
-//        List<IdealisedMessage> idealisedMessages = fromJSON.build("/resources/Kerberos.json");
 
-        List<IdealisedMessage> idealisedMessages = fromJSON.build("/resources/Needham-Schroeder-Shared-keys.json");
+        List<Rule> KerberosIdealisedMessages = IdealisedMessagesUtil.getIdealisedProtocol("/resources/Kerberos.json");
+//        List<Rule> NSSKIdealisedMessages = IdealisedMessagesUtil.getIdealisedProtocol("/resources/Needham-Schroeder-Shared-keys.json");
 
         boolean fresh = true;
         Message messageX = new Message(fresh);
@@ -31,5 +35,20 @@ public class Main {
         System.out.println(RuleContainer.Rules.size());
         System.out.println("--------------");
 
+    }
+
+    private static List<Rule> getIdealisedProtocol(List<IdealisedMessage> idealisedMessages) {
+
+        List<Rule> listPAM = new ArrayList<>();
+        for (IdealisedMessage idealisedMessage : idealisedMessages) {
+            if(idealisedMessage.getMessage().getType().equals(BanObjectType.ENCRYPTED_MESSAGE)) {
+                listPAM.add(new Rule(idealisedMessage.getReceiver(), SEES, idealisedMessage.getMessage()));
+            } else if (idealisedMessage.getMessage().getType().equals(BanObjectType.MESSAGE)) {
+                for (BanObject banObject : ((Message) idealisedMessage.getMessage()).getMessageList()) {
+                    listPAM.add(new Rule(idealisedMessage.getReceiver(), SEES, banObject));
+                }
+            }
+        }
+        return listPAM;
     }
 }
