@@ -7,6 +7,7 @@ import message.Message;
 import message.Principal;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static ban.ActionType.BELIEVES;

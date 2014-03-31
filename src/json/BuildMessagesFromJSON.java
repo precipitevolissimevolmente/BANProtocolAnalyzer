@@ -15,18 +15,17 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.google.common.collect.Iterables.contains;
-import static com.google.common.collect.Iterables.find;
-import static com.google.common.collect.Iterables.transform;
+import static com.google.common.collect.Iterables.*;
 
 public class BuildMessagesFromJSON {
-    private List<Principal> principals = new ArrayList<Principal>();
-    private List<Key> keys = new ArrayList<Key>();
+    private List<Principal> principals = new ArrayList<>();
+    private List<Key> keys = new ArrayList<>();
+    private List<TimeStmp> timeStamps = new ArrayList<>();
     private static final String ENCRYPTED_MESSAGE = "encryptedMessage";
 
 
     public List<IdealisedMessage> build(String jsonFile) throws IOException {
-        List<IdealisedMessage> idealisedMessages = new ArrayList<IdealisedMessage>();
+        List<IdealisedMessage> idealisedMessages = new ArrayList<>();
 
         InputStream is =
                 BuildMessagesFromJSON.class.getResourceAsStream(jsonFile);
@@ -62,12 +61,46 @@ public class BuildMessagesFromJSON {
 
     private BanObject buildMessage(JSONObject jsonObject) {
         if (jsonObject.getString("type").equalsIgnoreCase(ENCRYPTED_MESSAGE)) {
-            JSONObject keyJSON = jsonObject.getJSONObject("key");
-            Key key = getKey(keyJSON);
-            return new EncryptedMessage(key);
+            return getEncryptedMessage(jsonObject);
         }
 
         return null;
+    }
+
+    private Message getMessage(JSONArray messageJSONArray) {
+        Message message = new Message();
+        for (int j = 0; j < messageJSONArray.size(); j++) {
+            switch (messageJSONArray.getJSONObject(j).getString("type").toLowerCase()) {
+                case "key":
+                    message.add(getKey(messageJSONArray.getJSONObject(j)));
+                    break;
+                case "timestamp":
+                    message.add(getTimeStamp(messageJSONArray.getJSONObject(j)));
+                    break;
+                case "encryptedmessage":
+                    message.add(getEncryptedMessage(messageJSONArray.getJSONObject(j)));
+                    break;
+            }
+        }
+
+        return message;
+    }
+
+    private BanObject getEncryptedMessage(JSONObject jsonObject) {
+        JSONObject keyJSON = jsonObject.getJSONObject("key");
+        EncryptedMessage message = new EncryptedMessage(getKey(keyJSON));
+        message.setMessage(getMessage(jsonObject.getJSONArray("message")));
+        return message;
+    }
+
+    private BanObject getTimeStamp(JSONObject jsonObject) {
+        Principal identity = getPrincipal(jsonObject.getString("identity"), false);
+        boolean fresh = jsonObject.has("fresh");
+        TimeStmp timeStmp = new TimeStmp();
+        timeStmp.setNonceIdentity(identity);
+        timeStmp.setFresh(fresh);
+
+        return getNewOrExistentTimeStamp(timeStmp);
     }
 
     private Key getKey(JSONObject keyJSON) {
@@ -87,8 +120,16 @@ public class BuildMessagesFromJSON {
         return null;
     }
 
+    private BanObject getNewOrExistentTimeStamp(TimeStmp timeStmp) {
+        if (timeStamps.contains(timeStmp)) {
+            return find(timeStamps, new FindTimeStmp(timeStmp));
+        }
+        timeStamps.add(timeStmp);
+        return timeStmp;
+    }
+
     private Key getNewOrExistentKey(Key key) {
-        if(keys.contains(key)) {
+        if (keys.contains(key)) {
             return find(keys, new FindKey(key));
         }
         keys.add(key);
@@ -125,6 +166,20 @@ public class BuildMessagesFromJSON {
         };
     }
 
+    private class FindTimeStmp implements Predicate<TimeStmp> {
+        private TimeStmp timeStmpToFind;
+
+        public FindTimeStmp(TimeStmp timeStmp) {
+            this.timeStmpToFind = timeStmp;
+        }
+
+        @Override
+        public boolean apply(TimeStmp timeStmp) {
+            return this.timeStmpToFind.equals(timeStmp);
+        }
+    }
+
+
     public class FindKey implements Predicate<Key> {
         private Key keyToFind;
 
@@ -150,5 +205,4 @@ public class BuildMessagesFromJSON {
             return principal.getIdentity().equals(stringToFind);
         }
     }
-
 }
