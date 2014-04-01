@@ -1,5 +1,6 @@
 package AppLogic;
 
+import ban.Rule;
 import message.BanObject;
 
 import java.util.ArrayList;
@@ -14,11 +15,18 @@ import java.util.List;
  */
 public class RuleContainer {
 
-    public static List<BanObject> Rules=new ArrayList<BanObject>();
+    public static List<BanObject> RULES =new ArrayList<BanObject>();
 
 
     private RuleContainer() {
 
+    }
+
+    public static void addRule(Rule r) {
+        if(RULES.contains(r)) {
+            return;
+        }
+        RULES.add(r);
     }
 
 }

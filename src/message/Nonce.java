@@ -5,6 +5,7 @@ import static message.BanObjectType.NONCE;
 public class Nonce implements BanObject {
     boolean fresh;
     private Principal NonceIdentity;
+    //private String Label;
 
     public Principal getNonceIdentity() {
         return NonceIdentity;

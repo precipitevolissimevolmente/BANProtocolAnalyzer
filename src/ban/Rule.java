@@ -12,6 +12,10 @@ public class Rule implements BanObject {
     private ActionType action;
     private BanObject right;
 
+    public Rule() {
+
+    }
+
     public Rule(BanObject left, ActionType action, BanObject right) {
         this.left = left;
         this.action = action;
@@ -67,5 +71,17 @@ public class Rule implements BanObject {
             rule = temp.right;
         }
         return buff + " " + rule;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Rule) {
+            if ((((Rule) obj).getLeft().equals(this.getLeft())) &&
+                    (((Rule) obj).getRight().equals(this.getRight())) &&
+                    (((Rule) obj).getAction().equals(this.getAction()))) {
+                return true;
+            }
+        }
+        return false;
     }
 }

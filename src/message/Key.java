@@ -16,6 +16,15 @@ public class Key implements BanObject {
         this.fresh = fresh;
     }
 
+    public Key() {
+    }
+
+    public Key(KeyType sharedKey, Principal p, Principal q) {
+        this.keyType = sharedKey;
+        this.p=p;
+        this.q=q;
+    }
+
     public Principal getP() {
         return p;
     }

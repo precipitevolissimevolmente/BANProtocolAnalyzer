@@ -3,6 +3,7 @@ package AppLogic;
 import ban.Rule;
 import message.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static ban.ActionType.*;
@@ -11,31 +12,34 @@ import static message.KeyType.*;
 
 public class RuleBuilder {
 
-    public static void CombineRuleWith2Parameters(Rule rule1, Rule rule2) {
+    public static void CombineRuleWith2Parameters(Rule rule1, Rule rule2, boolean invert) {
         //Message-meaning rules
 
         //for shared keys
 
-        if (rule1.getLeft().equals(rule2.getLeft())) {
+        if (rule1 != null && rule2 != null && rule1.getLeft().equals(rule2.getLeft())) {
             if (rule1.getAction().equals(BELIEVES) && rule2.getAction().equals(SEES)) {
                 if (rule2.getRight().getType().equals(BanObjectType.ENCRYPTED_MESSAGE)) {
                     if ((rule1.getRight().getType().equals(BanObjectType.KEY))
                             && ((Key) (rule1.getRight())).getKeyType().equals(SHARED_KEY)
                             && (((EncryptedMessage) (rule2.getRight())).getKey().getKeyType().equals(SHARED_KEY))
                             && (((EncryptedMessage) (rule2.getRight())).getKey().getQ().equals(rule1.getLeft())
-                    || ((EncryptedMessage) (rule2.getRight())).getKey().getP().equals(rule1.getLeft())
-                            )) {
+                            || ((EncryptedMessage) (rule2.getRight())).getKey().getP().equals(rule1.getLeft())
+                    )) {
                         if ((((Key) (rule1.getRight())).getQ()).equals(rule1.getLeft()) &&
                                 !(((Key) (rule1.getRight())).getP()).equals(rule1.getLeft()))    //cheia nu este partajata de un singur agent
                         {
-                            RuleContainer.Rules.add(new Rule(rule1.getLeft(), BELIEVES, new Rule(((Key) (rule1.getRight())).getQ(), SAID,
+
+//                            if(RuleContainer.RULES.contains())
+                            RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, new Rule(((Key) (rule1.getRight())).getP(), SAID,
                                     ((EncryptedMessage) (rule2.getRight())).getMessage())));
 //                            return new Rule(rule1.getLeft(),BELIEVES,new Rule(((Key)(rule1.getRight())).getQ(),SAID,
 //                                    ((EncryptedMessage)(rule2.getRight())).getMessage()));
                         } else if ((((Key) (rule1.getRight())).getP()).equals(rule1.getLeft())
                                 && !(((Key) (rule1.getRight())).getQ()).equals(rule1.getLeft()))        //cheia nu este partajata de un singur agent
                         {
-                            RuleContainer.Rules.add(new Rule(rule1.getLeft(), BELIEVES, new Rule(((Key) (rule1.getRight())).getP(), SAID,
+                            System.out.println("ok");
+                            RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, new Rule(((Key) (rule1.getRight())).getQ(), SAID,
                                     ((EncryptedMessage) (rule2.getRight())).getMessage())));
 //                            return new Rule(rule1.getLeft(),BELIEVES,new Rule(((Key)(rule1.getRight())).getP(),SAID,
 //                                    ((EncryptedMessage)(rule2.getRight())).getMessage()));
@@ -55,14 +59,14 @@ public class RuleBuilder {
                         if ((((Key) (rule1.getRight())).getQ()).equals(rule1.getLeft()) &&
                                 !(((Key) (rule1.getRight())).getP()).equals(rule1.getLeft()))           //cheia nu este partajata de un singur agent
                         {
-                            RuleContainer.Rules.add(new Rule(rule1.getLeft(), SEES,
+                            RuleContainer.addRule(new Rule(rule1.getLeft(), SEES,
                                     ((EncryptedMessage) (rule2.getRight())).getMessage()));
 //                            return new Rule(rule1.getLeft(),SEES,
 //                                    ((EncryptedMessage)(rule2.getRight())).getMessage());
                         } else if ((((Key) (rule1.getRight())).getP()).equals(rule1.getLeft()) &&
                                 !(((Key) (rule1.getRight())).getQ()).equals(rule1.getLeft()))    //cheia nu este partajata de un singur agent
                         {
-                            RuleContainer.Rules.add(new Rule(rule1.getLeft(), SEES,
+                            RuleContainer.addRule(new Rule(rule1.getLeft(), SEES,
                                     ((EncryptedMessage) (rule2.getRight())).getMessage()));
 //                            return new Rule(rule1.getLeft(),SEES,
 //                                    ((EncryptedMessage)(rule2.getRight())).getMessage());
@@ -88,7 +92,7 @@ public class RuleBuilder {
                     //x == x
                     (rule1.getRight().equals(((Rule) rule2.getRight()).getRight()))) {
                 //P believes Q said X
-                RuleContainer.Rules.add(new Rule(rule1.getLeft(), BELIEVES, new Rule(((Rule) rule2.getRight()).getLeft(), BELIEVES, rule1.getRight())));
+                RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, new Rule(((Rule) rule2.getRight()).getLeft(), BELIEVES, rule1.getRight())));
 //                return new Rule(rule1.getLeft(), BELIEVES, new Rule(((Rule)rule2.getRight()).getLeft(), BELIEVES, rule1.getRight()));
             }
 
@@ -106,16 +110,16 @@ public class RuleBuilder {
 
                     {
 
-                        RuleContainer.Rules.add(new Rule(rule1.getLeft(), BELIEVES, new Rule(((Key) (rule1.getRight())).getQ(), SAID,
+                        RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, new Rule(((Key) (rule1.getRight())).getQ(), SAID,
                                 ((EncryptedMessage) (rule2.getRight())).getMessage())));
 //                                return new Rule(rule1.getLeft(),BELIEVES,new Rule(((Key)(rule1.getRight())).getQ(),SAID,
 //                                        ((EncryptedMessage)(rule2.getRight())).getMessage()));
                     }
                     if (((Key) (rule1.getRight())).getP() != null && ((Key) (rule1.getRight())).getQ() == null &&
-                            ((Key) (rule1.getRight())).getP().equals(((EncryptedMessage) (rule2.getRight())).getKey().getQ())  ||
+                            ((Key) (rule1.getRight())).getP().equals(((EncryptedMessage) (rule2.getRight())).getKey().getQ()) ||
                             ((Key) (rule1.getRight())).getP().equals(((EncryptedMessage) (rule2.getRight())).getKey().getP())) {
-                                    RuleContainer.Rules.add(new Rule(rule1.getLeft(), BELIEVES, new Rule(((Key) (rule1.getRight())).getP(), SAID,
-                                            ((EncryptedMessage) (rule2.getRight())).getMessage())));
+                        RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, new Rule(((Key) (rule1.getRight())).getP(), SAID,
+                                ((EncryptedMessage) (rule2.getRight())).getMessage())));
 
 //                                return new Rule(rule1.getLeft(),BELIEVES,new Rule(((Key)(rule1.getRight())).getP(),SAID,
 //                                        ((EncryptedMessage)(rule2.getRight())).getMessage()));
@@ -130,18 +134,18 @@ public class RuleBuilder {
                         && (rule2.getType().equals(ENCRYPTED_MESSAGE))
                         && ((EncryptedMessage) (rule1.getRight())).getKey().getKeyType().equals(PRIVATE_KEY)) {
                     if (((Key) (rule1.getRight())).getQ() != null && ((Key) (rule1.getRight())).getP() == null &&
-                            ((Key) (rule1.getRight())).getQ().equals(((EncryptedMessage) (rule2.getRight())).getKey().getQ() )
-                            || ((Key) (rule1.getRight())).getQ().equals(((EncryptedMessage) (rule2.getRight())).getKey().getP() )) {
-                        RuleContainer.Rules.add(new Rule(rule1.getLeft(), SEES,
+                            ((Key) (rule1.getRight())).getQ().equals(((EncryptedMessage) (rule2.getRight())).getKey().getQ())
+                            || ((Key) (rule1.getRight())).getQ().equals(((EncryptedMessage) (rule2.getRight())).getKey().getP())) {
+                        RuleContainer.addRule(new Rule(rule1.getLeft(), SEES,
                                 ((EncryptedMessage) (rule2.getRight())).getMessage()));
 //                        return new Rule(rule1.getLeft(),SEES,
 //                                ((EncryptedMessage)(rule2.getRight())).getMessage());
                     }
                     if (((Key) (rule1.getRight())).getP() != null && ((Key) (rule1.getRight())).getQ() == null
-                            && ((Key) (rule1.getRight())).getP().equals(((EncryptedMessage) (rule2.getRight())).getKey().getQ() )
-                            || ((Key) (rule1.getRight())).getP().equals(((EncryptedMessage) (rule2.getRight())).getKey().getP() )
+                            && ((Key) (rule1.getRight())).getP().equals(((EncryptedMessage) (rule2.getRight())).getKey().getQ())
+                            || ((Key) (rule1.getRight())).getP().equals(((EncryptedMessage) (rule2.getRight())).getKey().getP())
                             ) {
-                        RuleContainer.Rules.add(new Rule(rule1.getLeft(), SEES,
+                        RuleContainer.addRule(new Rule(rule1.getLeft(), SEES,
                                 ((EncryptedMessage) (rule2.getRight())).getMessage()));
 //                        return new Rule(rule1.getLeft(),SEES,
 //                                ((EncryptedMessage)(rule2.getRight())).getMessage());
@@ -155,13 +159,13 @@ public class RuleBuilder {
                         && (rule2.getType().equals(ENCRYPTED_MESSAGE))
                         && ((EncryptedMessage) (rule1.getRight())).getKey().getKeyType().equals(PUBLIC_KEY)) {
                     if (((Key) (rule1.getRight())).getQ() == rule1.getLeft()) {
-                        RuleContainer.Rules.add(new Rule(rule1.getLeft(), SEES,
+                        RuleContainer.addRule(new Rule(rule1.getLeft(), SEES,
                                 ((EncryptedMessage) (rule2.getRight())).getMessage()));
 //                        return new Rule(rule1.getLeft(),SEES,
 //                                ((EncryptedMessage)(rule2.getRight())).getMessage());
                     }
                     if (((Key) (rule1.getRight())).getP() == rule1.getLeft()) {
-                        RuleContainer.Rules.add(new Rule(rule1.getLeft(), SEES,
+                        RuleContainer.addRule(new Rule(rule1.getLeft(), SEES,
                                 ((EncryptedMessage) (rule2.getRight())).getMessage()));
 //                        return new Rule(rule1.getLeft(),SEES,
 //                                ((EncryptedMessage)(rule2.getRight())).getMessage());
@@ -181,7 +185,7 @@ public class RuleBuilder {
                         if (rightRule1.getAction().equals(CONTROLS) && (rightRule2).getAction().equals(BELIEVES)) {
                             if (rightRule1.getRight().getType().equals(rightRule2.getRight().getType())) {
                                 if (rightRule1.getRight().equals(rightRule2.getRight())) {
-                                    RuleContainer.Rules.add(new Rule(rule1.getLeft(), BELIEVES, rightRule1.getRight()));
+                                    RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rightRule1.getRight()));
 //                                return new Rule(rule1.getLeft(),BELIEVES,rightRule1.getRight());
                                 }
                             }
@@ -194,34 +198,116 @@ public class RuleBuilder {
         }
 
 
-        if(rule1.equals(null)&& !rule2.equals(null)){  //reguli cu un singur input
-             if(rule2.getLeft().getType().equals(BanObjectType.PRINCIPAL)){
-                 if(rule2.getAction().equals(SEES)){
-                     if(rule2.getType().equals(BanObjectType.MESSAGE)){
-                         for (BanObject bo : ((Message)(rule2.getRight())).getMessageList()) {
-                             RuleContainer.Rules.add(new Rule(rule2.getLeft(),SEES,bo));
-                         }
+        if (rule1 == null && rule2 != null) {  //reguli cu un singur input
+            if (rule2.getLeft().getType().equals(BanObjectType.PRINCIPAL)) {
+                if (rule2.getAction().equals(SEES)) {
 
-                     }
-                 }
-             }
-        }
-        else if(!rule1.equals(null)&& rule2.equals(null)){
-            if(rule1.getLeft().getType().equals(BanObjectType.PRINCIPAL)){
-                if(rule1.getAction().equals(SEES)){
-                    if(rule1.getType().equals(BanObjectType.MESSAGE)){
-                        for (BanObject bo : ((Message)(rule1.getRight())).getMessageList()) {
-                            RuleContainer.Rules.add(new Rule(rule1.getLeft(),SEES,bo));
+                    if (rule2.getType().equals(BanObjectType.MESSAGE)) {
+                        for (BanObject bo : ((Message) (rule2.getRight())).getMessageList()) {
+                            RuleContainer.addRule(new Rule(rule2.getLeft(), SEES, bo));
                         }
 
                     }
                 }
+                if(rule2.getAction().equals(BELIEVES)){
+                    if(rule2.getRight().getType().equals(BanObjectType.MESSAGE)){
+                        for (BanObject o  : ((Message)(rule2.getRight())).getMessageList()) {
+                            if(o.getType().equals(TIMESTAMP))
+                            {
+                                if(((TimeStmp)o).isFresh())
+                                    ((Message)(rule2.getRight())).setFresh(true);
+                                RuleContainer.addRule(new Rule(rule2.getLeft(), BELIEVES, rule2.getRight()));
+                            }
+                            if(o.getType().equals(NONCE))
+                            {
+                                if(((Nonce)o).isFresh())
+                                    ((Message)(rule2.getRight())).setFresh(true);
+                                RuleContainer.addRule(new Rule(rule2.getLeft(), BELIEVES, rule2.getRight()));
+
+                            }
+                            if(o.getType().equals(SHARED_KEY))
+                            {
+                                if(((Key)o).isFresh())
+                                    ((Message)(rule2.getRight())).setFresh(true);
+                                RuleContainer.addRule(new Rule(rule2.getLeft(), BELIEVES, rule2.getRight()));
+
+                            }
+                        }
+                    }
+                }
             }
+        } else if (rule1 != null && rule2 == null) {
+
+            if (rule1.getLeft().getType().equals(BanObjectType.PRINCIPAL)) {
+                if (rule1.getAction().equals(SEES)) {
+                    if (rule1.getRight().getType().equals(BanObjectType.MESSAGE)) {
+                        System.out.println("hi");
+                        for (BanObject bo : ((Message) (rule1.getRight())).getMessageList()) {
+                            RuleContainer.addRule(new Rule(rule1.getLeft(), SEES, bo));
+                        }
+
+                    }
+                }
+                if(rule1.getAction().equals(BELIEVES)){
+                    if(rule1.getRight().getType().equals(BanObjectType.MESSAGE)){
+                        for (BanObject o  : ((Message)(rule1.getRight())).getMessageList()) {
+                             if(o.getType().equals(TIMESTAMP))
+                             {
+                                 if(((TimeStmp)o).isFresh())
+                                     ((Message)(rule1.getRight())).setFresh(true);
+                                 RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
+                             }
+                            if(o.getType().equals(NONCE))
+                            {
+                                if(((Nonce)o).isFresh())
+                                    ((Message)(rule1.getRight())).setFresh(true);
+                                RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
+                            }
+                            if(o.getType().equals(SHARED_KEY))
+                            {
+                                if(((Key)o).isFresh())
+                                    ((Message)(rule1.getRight())).setFresh(true);
+                                RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (invert) {
+            CombineRuleWith2Parameters(rule2, rule1, false);
         }
         // Teoretic s-ar putea facea regula cu compuneri, discutabil
 
-
-
-
     }
+
+    public static List<BanObject> GenerateRules(List<BanObject> Rules) {
+        List<BanObject> result = new ArrayList<>();
+        result.addAll(Rules);
+        int initialSize = 0;
+        while (RuleContainer.RULES.size() != initialSize) {
+            initialSize = RuleContainer.RULES.size();
+            if (Rules.size() == 0) {
+                System.out.println("Empty set of rules");
+            } else if (Rules.size() == 1) {
+                //System.out.println((Rule)RULES.get(0));
+                CombineRuleWith2Parameters((Rule) result.get(0), null, false);
+            } else if (Rules.size() > 1) {
+                for (int i = 0; i < result.size() - 1; i++) {
+                    for (int j = i + 1; j < result.size(); j++) {
+                        CombineRuleWith2Parameters((Rule) result.get(i), (Rule) result.get(j), true);
+
+                    }
+                }
+
+            }
+
+
+            for (int i = 0; i < result.size(); i++) {
+                CombineRuleWith2Parameters((Rule) result.get(i), null, false);
+            }
+        }
+        return result;
+    }
+
 }
