@@ -18,4 +18,9 @@ public class TimeStmp extends Nonce {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return fresh ? "Fresh TIMESTAMP " + this.getNonceIdentity().toString() : "TIMESTAMP "+ this.getNonceIdentity().toString();
+    }
 }

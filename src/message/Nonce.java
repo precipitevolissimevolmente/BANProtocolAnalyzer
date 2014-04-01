@@ -31,14 +31,15 @@ public class Nonce implements BanObject {
 
     @Override
     public String toString() {
-        return fresh ? "Fresh" + NonceIdentity : NonceIdentity.toString();
+        return fresh ? "Fresh NONCE " + NonceIdentity : "NONCE "+ NonceIdentity.toString();
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Nonce) {
             if ((((Nonce) obj).getNonceIdentity().equals(this.getNonceIdentity())) &&
-                    (((Nonce) obj).isFresh() == this.isFresh())) {
+                    (((Nonce) obj).isFresh() == this.isFresh()) &&
+                    (((Nonce) obj).getType() == this.getType())) {
                 return true;
             }
         }

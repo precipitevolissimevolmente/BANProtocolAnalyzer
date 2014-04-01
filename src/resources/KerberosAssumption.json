@@ -1,0 +1,101 @@
+{
+    "assumptions": [
+        {
+            "left": "A",
+            "action": "BELIEVES",
+            "right": {
+                "type": "key",
+                "keyType": "SHARED_KEY",
+                "between": ["A", "S"]
+            }
+        },
+        {
+            "left": "S",
+            "action": "BELIEVES",
+            "right": {
+                "type": "key",
+                "keyType": "SHARED_KEY",
+                "between": ["A", "S"]
+            }
+        },
+        {
+            "left": "S",
+            "action": "BELIEVES",
+            "right": {
+                "type": "key",
+                "keyType": "SHARED_KEY",
+                "between": ["A", "B"]
+            }
+        },
+        {
+            "left": "A",
+            "action": "BELIEVES",
+            "right": {
+                "type": "rule",
+                "left": "S",
+                "action": "CONTROLS",
+                "right": {
+                    "type": "key",
+                    "keyType": "SHARED_KEY",
+                    "between": ["A", "B"]
+                }
+            }
+        },
+        {
+            "left": "A",
+            "action": "BELIEVES",
+            "right":  {
+                "type": "timestamp",
+                "identity": "S"
+            }
+        },
+        {
+            "left": "B",
+            "action": "BELIEVES",
+            "right": {
+                "type": "key",
+                "keyType": "SHARED_KEY",
+                "between": ["B", "S"]
+            }
+        },
+        {
+            "left": "S",
+            "action": "BELIEVES",
+            "right": {
+                "type": "key",
+                "keyType": "SHARED_KEY",
+                "between": ["B", "S"]
+            }
+        },
+        {
+            "left": "B",
+            "action": "BELIEVES",
+            "right": {
+                "type": "rule",
+                "left": "S",
+                "action": "CONTROLS",
+                "right": {
+                    "type": "key",
+                    "keyType": "SHARED_KEY",
+                    "between": ["A", "B"]
+                }
+            }
+        },
+        {
+            "left": "B",
+            "action": "BELIEVES",
+            "right":  {
+                "type": "timestamp",
+                "identity": "S"
+            }
+        },
+        {
+            "left": "B",
+            "action": "BELIEVES",
+            "right":  {
+                "type": "timestamp",
+                "identity": "A"
+            }
+        }
+    ]
+}

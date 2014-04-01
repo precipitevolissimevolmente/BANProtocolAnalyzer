@@ -1,31 +1,20 @@
 import AppLogic.RuleBuilder;
 import AppLogic.RuleContainer;
-import ban.ActionType;
 import ban.Rule;
-import idealisedprotocol.IdealisedMessage;
-import idealisedprotocol.IdealisedMessagesUtil;
-import json.BuildMessagesFromJSON;
-import message.BanObject;
-import message.BanObjectType;
-import message.Message;
-import message.Principal;
+import json.JSONBuilder;
 import message.*;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static ban.ActionType.BELIEVES;
-import static ban.ActionType.SAID;
-import static ban.ActionType.SEES;
+import static ban.ActionType.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BuildMessagesFromJSON fromJSON = new BuildMessagesFromJSON();
-        List<IdealisedMessage> idealisedMessages = fromJSON.build("/resources/Kerberos.json");
+    public static void main(String[] args) {
+        JSONBuilder kerberos = new JSONBuilder("/resources/Kerberos.json", "/resources/KerberosAssumption.json");
+        kerberos.getIdealisedRules();
+        kerberos.getAssumptions();
 
-        List<Rule> KerberosIdealisedMessages = IdealisedMessagesUtil.getIdealisedProtocol("/resources/Kerberos.json");
-//        List<Rule> NSSKIdealisedMessages = IdealisedMessagesUtil.getIdealisedProtocol("/resources/Needham-Schroeder-Shared-keys.json");
+        JSONBuilder nssk = new JSONBuilder("/resources/Needham-Schroeder-Shared-keys.json", "/resources/NSSKAssumptions.json");
+        nssk.getIdealisedRules();
+        nssk.getAssumptions();
 
         boolean fresh = true;
         Message messageX = new Message(fresh);

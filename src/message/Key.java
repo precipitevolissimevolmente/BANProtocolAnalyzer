@@ -58,10 +58,20 @@ public class Key implements BanObject {
     public boolean equals(Object obj) {
         if (obj instanceof Key) {
         if((((Key)obj).getKeyType().equals(this.getKeyType()))
-                && (((Key)obj).getP().equals(this.getP())) && (((Key)obj).getQ().equals(this.getQ()))) {
+                && (((Key)obj).getP().equals(this.getP())) && (((Key)obj).getQ().equals(this.getQ()))
+                && (((Key)obj).isFresh() == (this.isFresh()))) {
                 return true;
             }
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Key{" + keyType +
+                ", p=" + p +
+                ", q=" + q +
+                ", fresh=" + fresh +
+                '}';
     }
 }

@@ -55,7 +55,7 @@ public class Rule implements BanObject {
     public String toString() {
         String ruleString = left + " " + action + " ";
 
-        if (right.getType().equals(RULE)) {
+        if (right != null && right.getType().equals(RULE)) {
             ruleString += getString(right, " ");
         } else {
             ruleString += right;

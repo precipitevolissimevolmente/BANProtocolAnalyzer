@@ -1,6 +1,8 @@
 package json;
 
 
+import ban.ActionType;
+import ban.Rule;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import idealisedprotocol.IdealisedMessage;
@@ -25,15 +27,10 @@ public class BuildMessagesFromJSON {
     private static final String ENCRYPTED_MESSAGE = "encryptedMessage";
 
 
-    public List<IdealisedMessage> build(String jsonFile) throws IOException {
+    public List<IdealisedMessage> buildIdealisedMessages(String jsonFile) throws IOException {
         List<IdealisedMessage> idealisedMessages = new ArrayList<>();
 
-        InputStream is =
-                BuildMessagesFromJSON.class.getResourceAsStream(jsonFile);
-        String jsonTxt = IOUtils.toString(is);
-
-        JSONObject jsonObject = (JSONObject) JSONSerializer.toJSON(jsonTxt);
-        JSONArray protocolMessages = jsonObject.getJSONArray("protocolMessages");
+        JSONArray protocolMessages = getJSONArray(jsonFile, "protocolMessages");
 
         for (int i = 0; i < protocolMessages.size(); i++) {
             IdealisedMessage idealisedMessage = new IdealisedMessage();
@@ -45,6 +42,63 @@ public class BuildMessagesFromJSON {
         }
 
         return idealisedMessages;
+    }
+
+    public List<Rule> buildAssumptions(String jsonFile) throws IOException {
+        List<Rule> rules = new ArrayList<>();
+
+        JSONArray protocolMessages = getJSONArray(jsonFile, "assumptions");
+
+        for (int i = 0; i < protocolMessages.size(); i++) {
+            rules.add(getRule(protocolMessages.getJSONObject(i)));
+        }
+
+        return rules;
+    }
+
+    private BanObject getRight(JSONObject jsonObject) {
+        switch (jsonObject.getString("type").toLowerCase()) {
+            case "key":
+                return getKey(jsonObject);
+            case "timestamp":
+                return getTimeStamp(jsonObject);
+            case "nonce":
+                return getNonce(jsonObject);
+            case "encryptedmessage":
+                return getEncryptedMessage(jsonObject);
+            case "rule":
+                return getRule(jsonObject);
+        }
+
+        return null;  //To change body of created methods use File | Settings | File Templates.
+    }
+
+    private Rule getRule(JSONObject jsonRule) {
+        Rule rule = new Rule();
+        rule.setLeft(getLeft(jsonRule));
+        rule.setAction(getAction(jsonRule));
+        rule.setRight(getRight(jsonRule.getJSONObject("right")));
+        return rule;
+    }
+
+    private ActionType getAction(JSONObject jsonRule) {
+        String actionName = jsonRule.getString("action");
+        return ActionType.valueOf(actionName.toUpperCase());
+    }
+
+    private BanObject getLeft(JSONObject jsonRule) {
+        String principalIdentity = jsonRule.getString("left");
+        boolean isTrustedAuthority = jsonRule.has("leftTA");
+        return getPrincipal(principalIdentity, isTrustedAuthority);
+    }
+
+    private JSONArray getJSONArray(String jsonFile, String id) throws IOException {
+        InputStream is =
+                BuildMessagesFromJSON.class.getResourceAsStream(jsonFile);
+        String jsonTxt = IOUtils.toString(is);
+
+        JSONObject jsonObject = (JSONObject) JSONSerializer.toJSON(jsonTxt);
+        return jsonObject.getJSONArray(id);
     }
 
     private BanObject getMessages(JSONArray messages) {
@@ -224,7 +278,7 @@ public class BuildMessagesFromJSON {
 
         @Override
         public boolean apply(Key key) {
-            return key.getKeyType().equals(keyToFind.getKeyType()) && key.getP().equals(keyToFind.getP()) && key.getQ().equals(keyToFind.getQ());
+            return key.equals(keyToFind);
         }
     }
 
