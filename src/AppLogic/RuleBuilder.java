@@ -435,6 +435,8 @@ public class RuleBuilder {
             for (int i = 0; i < result.size(); i++) {
                 CombineRuleWith2Parameters((Rule) result.get(i), null, false);
             }
+            result.clear();
+            result.addAll(RuleContainer.RULES);
         }
         return result;
     }
