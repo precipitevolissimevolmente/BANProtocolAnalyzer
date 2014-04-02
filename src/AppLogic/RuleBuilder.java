@@ -83,9 +83,8 @@ public class RuleBuilder {
             if ((rule1.getAction().equals(BELIEVES)) &&
                     isRightSideFresh(rule1) &&
 
-                    (rule2.getAction().equals(BELIEVES)) &&
-                    ((rule2.getRight().getType().equals(RULE)) &&
-                            (((Rule) rule2.getRight()).getLeft().getType().equals(PRINCIPAL)) &&
+                    (rule2.getAction().equals(BELIEVES)) && (rule2.getRight().getType().equals(RULE)) &&
+                    ((((Rule) rule2.getRight()).getLeft().getType().equals(PRINCIPAL)) &&
                             (((Rule) rule2.getRight()).getAction().equals(SAID)) &&
                             ((((Rule) rule2.getRight()).getRight().getType().equals(MESSAGE)))
                                 ||(((Rule) rule2.getRight()).getRight().getType().equals(TIMESTAMP))
