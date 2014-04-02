@@ -28,4 +28,12 @@ public class EncryptedMessage implements BanObject {
     public BanObjectType getType() {
         return BanObjectType.ENCRYPTED_MESSAGE;
     }
+
+    @Override
+    public String toString() {
+        return "EncryptedMessage{" +
+                "message=" + message +
+                ", key=" + key +
+                '}';
+    }
 }

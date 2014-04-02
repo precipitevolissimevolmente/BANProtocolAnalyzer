@@ -46,6 +46,7 @@
             "action": "BELIEVES",
             "right":  {
                 "type": "timestamp",
+                "fresh":"",
                 "identity": "S"
             }
         },
@@ -86,6 +87,7 @@
             "action": "BELIEVES",
             "right":  {
                 "type": "timestamp",
+                "fresh": "",
                 "identity": "S"
             }
         },
@@ -94,6 +96,7 @@
             "action": "BELIEVES",
             "right":  {
                 "type": "timestamp",
+                "fresh": "",
                 "identity": "A"
             }
         }
