@@ -87,10 +87,12 @@ public class RuleBuilder {
                     ((rule2.getRight().getType().equals(RULE)) &&
                             (((Rule) rule2.getRight()).getLeft().getType().equals(PRINCIPAL)) &&
                             (((Rule) rule2.getRight()).getAction().equals(SAID)) &&
-                            (((Rule) rule2.getRight()).getRight().getType().equals(MESSAGE))) &&
+                            ((((Rule) rule2.getRight()).getRight().getType().equals(MESSAGE)))
+                                ||(((Rule) rule2.getRight()).getRight().getType().equals(TIMESTAMP))
+                                ||(((Rule) rule2.getRight()).getRight().getType().equals(NONCE))) &&
 
                     //x == x
-                    (rule1.getRight().equals(((Rule) rule2.getRight()).getRight()))) {
+                    rule1RightEqRule2Right(rule1, rule2)) {
                 //P believes Q said X
                 RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, new Rule(((Rule) rule2.getRight()).getLeft(), BELIEVES, rule1.getRight())));
             }
@@ -347,6 +349,25 @@ public class RuleBuilder {
         }
         // Teoretic s-ar putea facea regula cu compuneri, discutabil
 
+    }
+
+    private static boolean rule1RightEqRule2Right(Rule rule1, Rule rule2) {
+        if(rule1.getRight().getType().equals(((Rule) rule2.getRight()).getRight().getType())) {
+            if((rule1.getRight().getType().equals(MESSAGE)) &&
+                    ((Message)rule1.getRight()).getMessageList().equals(((Message)((Rule) rule2.getRight()).getRight()).getMessageList())) {
+                return true;
+            } else if((rule1.getRight().getType().equals(TIMESTAMP)) && (((TimeStmp)rule1.getRight()).getNonceIdentity().equals(((TimeStmp)((Rule) rule2.getRight()).getRight()).getNonceIdentity()))) {
+                return true;
+            } else if((rule1.getRight().getType().equals(NONCE)) && (((Nonce)rule1.getRight()).getNonceIdentity().equals(((Nonce)((Rule) rule2.getRight()).getRight()).getNonceIdentity()))) {
+                return true;
+            } else if((rule1.getRight().getType().equals(KEY)) &&
+                    (((Key)rule1.getRight()).getKeyType().equals(((Key)((Rule) rule2.getRight()).getRight()).getKeyType())) &&
+                    (((Key)rule1.getRight()).getP().equals(((Key)((Rule) rule2.getRight()).getRight()).getP())) &&
+                    (((Key)rule1.getRight()).getQ().equals(((Key)((Rule) rule2.getRight()).getRight()).getQ()))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static boolean isRightSideFresh(Rule rule1) {
