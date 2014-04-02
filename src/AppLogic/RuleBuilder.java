@@ -259,7 +259,7 @@ public class RuleBuilder {
                                 if(((Rule)(rule2.getRight())).getRight().getType().equals(MESSAGE))
                                 {
                                     for (BanObject o : ((Message)(((Rule)(rule2.getRight())).getRight())).getMessageList()) {
-                                          RuleContainer.RULES.add(new Rule(rule2.getLeft(),BELIEVES,new Rule(((Rule)(rule2.getRight())).getLeft(),BELIEVES,o)));
+                                          RuleContainer.addRule(new Rule(rule2.getLeft(),BELIEVES,new Rule(((Rule)(rule2.getRight())).getLeft(),BELIEVES,o)));
                                     }
                                 }
                             }
@@ -268,7 +268,7 @@ public class RuleBuilder {
                                 if(((Rule)(rule2.getRight())).getRight().getType().equals(MESSAGE))
                                 {
                                     for (BanObject o : ((Message)(((Rule)(rule2.getRight())).getRight())).getMessageList()) {
-                                        RuleContainer.RULES.add(new Rule(rule2.getLeft(),BELIEVES,new Rule(((Rule)(rule2.getRight())).getLeft(),SAID,o)));
+                                        RuleContainer.addRule(new Rule(rule2.getLeft(),BELIEVES,new Rule(((Rule)(rule2.getRight())).getLeft(),SAID,o)));
                                     }
                                 }
                             }
@@ -324,7 +324,7 @@ public class RuleBuilder {
                                 if(((Rule)(rule1.getRight())).getRight().getType().equals(MESSAGE))
                                 {
                                     for (BanObject o : ((Message)(((Rule)(rule1.getRight())).getRight())).getMessageList()) {
-                                        RuleContainer.RULES.add(new Rule(rule1.getLeft(),BELIEVES,new Rule(((Rule)(rule1.getRight())).getLeft(),BELIEVES,o)));
+                                        RuleContainer.addRule(new Rule(rule1.getLeft(),BELIEVES,new Rule(((Rule)(rule1.getRight())).getLeft(),BELIEVES,o)));
                                     }
                                 }
                             }
@@ -333,7 +333,7 @@ public class RuleBuilder {
                                 if(((Rule)(rule1.getRight())).getRight().getType().equals(MESSAGE))
                                 {
                                     for (BanObject o : ((Message)(((Rule)(rule1.getRight())).getRight())).getMessageList()) {
-                                        RuleContainer.RULES.add(new Rule(rule1.getLeft(),BELIEVES,new Rule(((Rule)(rule1.getRight())).getLeft(),SAID,o)));
+                                        RuleContainer.addRule(new Rule(rule1.getLeft(),BELIEVES,new Rule(((Rule)(rule1.getRight())).getLeft(),SAID,o)));
                                     }
                                 }
                             }
@@ -375,7 +375,8 @@ public class RuleBuilder {
                 }
 
             }
-
+            result.clear();
+            result.addAll(RuleContainer.RULES);
 
             for (int i = 0; i < result.size(); i++) {
                 CombineRuleWith2Parameters((Rule) result.get(i), null, false);
