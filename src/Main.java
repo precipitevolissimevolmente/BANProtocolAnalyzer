@@ -4,13 +4,17 @@ import ban.Rule;
 import json.JSONBuilder;
 import message.*;
 
+import java.util.List;
+
 import static ban.ActionType.*;
 
 public class Main {
     public static void main(String[] args) {
         JSONBuilder kerberos = new JSONBuilder("/resources/Kerberos.json", "/resources/KerberosAssumption.json");
-        kerberos.getIdealisedRules();
-        kerberos.getAssumptions();
+        List<Rule> idealisedRules = kerberos.getIdealisedRules();
+        List<Rule> assumptions = kerberos.getAssumptions();
+        RuleContainer.RULES.addAll(idealisedRules);
+        RuleContainer.RULES.addAll(assumptions);
 
         JSONBuilder nssk = new JSONBuilder("/resources/Needham-Schroeder-Shared-keys.json", "/resources/NSSKAssumptions.json");
         nssk.getIdealisedRules();
@@ -45,7 +49,7 @@ public class Main {
         System.out.println(RuleContainer.RULES.size());
         System.out.println("--------------");
 
-        RuleBuilder.GenerateRules(RuleContainer.RULES);
+       /* RuleBuilder.GenerateRules(RuleContainer.RULES);
         for (BanObject bo : RuleContainer.RULES) {
             System.out.println(bo.toString());
 
@@ -70,7 +74,7 @@ public class Main {
         rul2.setAction(SEES);
         rul2.setRight(emsg);
         RuleContainer.RULES.add(rul1);
-        RuleContainer.RULES.add(rul2);
+        RuleContainer.RULES.add(rul2);                  */
         RuleBuilder.GenerateRules(RuleContainer.RULES);
         for (BanObject bo : RuleContainer.RULES) {
             System.out.println(bo.toString());

@@ -100,8 +100,8 @@ public class RuleBuilder {
             if ((rule1.getAction().equals(BELIEVES)) && rule2.getAction().equals(SEES)) {
                 if (rule1.getRight().getType().equals(BanObjectType.KEY)
                         && ((Key) (rule1.getRight())).getKeyType().equals(PUBLIC_KEY)
-                        && (rule2.getType().equals(ENCRYPTED_MESSAGE))
-                        && ((EncryptedMessage) (rule1.getRight())).getKey().getKeyType().equals(PRIVATE_KEY)) {
+                        && (rule2.getRight().getType().equals(ENCRYPTED_MESSAGE))
+                        && ((EncryptedMessage) (rule2.getRight())).getKey().getKeyType().equals(PRIVATE_KEY)) {
                     if (((Key) (rule1.getRight())).getQ() != null && ((Key) (rule1.getRight())).getP() == null
                             && (
                             ((Key) (rule1.getRight())).getQ().equals(((EncryptedMessage) (rule2.getRight())).getKey().getQ())
@@ -130,11 +130,11 @@ public class RuleBuilder {
             if ((rule1.getAction().equals(BELIEVES)) && rule2.getAction().equals(SEES)) {
                 if (rule1.getRight().getType().equals(BanObjectType.KEY)
                         && ((Key) (rule1.getRight())).getKeyType().equals(PUBLIC_KEY)
-                        && (rule2.getType().equals(ENCRYPTED_MESSAGE))
-                        && ((EncryptedMessage) (rule1.getRight())).getKey().getKeyType().equals(PRIVATE_KEY)) {
+                        && (rule2.getRight().getType().equals(ENCRYPTED_MESSAGE))
+                        && ((EncryptedMessage) (rule2.getRight())).getKey().getKeyType().equals(PRIVATE_KEY)) {
                     if (((Key) (rule1.getRight())).getQ() != null && ((Key) (rule1.getRight())).getP() == null &&
-                            ((Key) (rule1.getRight())).getQ().equals(((EncryptedMessage) (rule2.getRight())).getKey().getQ())
-                            || ((Key) (rule1.getRight())).getQ().equals(((EncryptedMessage) (rule2.getRight())).getKey().getP())) {
+                            (((Key) (rule1.getRight())).getQ().equals(((EncryptedMessage) (rule2.getRight())).getKey().getQ())
+                            || ((Key) (rule1.getRight())).getQ().equals(((EncryptedMessage) (rule2.getRight())).getKey().getP()))) {
                         RuleContainer.addRule(new Rule(rule1.getLeft(), SEES,
                                 ((EncryptedMessage) (rule2.getRight())).getMessage()));
 //                        return new Rule(rule1.getLeft(),SEES,
@@ -192,9 +192,21 @@ public class RuleBuilder {
                     }
                 }
             }
+           /* if(rule1.getAction().equals(BELIEVES) && rule2.getAction().equals(BELIEVES)){
+                if((rule1.getRight().getType().equals(MESSAGE)||rule1.getRight().getType().equals(NONCE)||rule1.getRight().getType().equals(TIMESTAMP)||rule1.getRight().getType().equals(ENCRYPTED_MESSAGE))&&
+                   (rule2.getRight().getType().equals(MESSAGE)||rule2.getRight().getType().equals(NONCE)||rule2.getRight().getType().equals(TIMESTAMP)||rule2.getRight().getType().equals(ENCRYPTED_MESSAGE)))
+                {
+                     Message msg=new Message();
+                     msg.add(rule1.getRight());
+                     msg.add(rule2.getRight());
+                     RuleContainer.RULES.add(new Rule(rule1.getLeft(),BELIEVES,msg));
+                }
+
+            }   */
 
 
         }
+
 
 
         if (rule1 == null && rule2 != null) {  //reguli cu un singur input
@@ -235,12 +247,40 @@ public class RuleBuilder {
                     }
                 }
             }
+            if(rule2.getLeft().getType().equals(PRINCIPAL))
+            {
+                if(rule2.getAction().equals(BELIEVES))
+                {
+                    if (rule2.getRight().getType().equals(RULE)){
+                        if(((Rule)(rule2.getRight())).getLeft().getType().equals(PRINCIPAL))
+                        {
+                            if(((Rule)(rule2.getRight())).getAction().equals(BELIEVES))
+                            {
+                                if(((Rule)(rule2.getRight())).getRight().getType().equals(MESSAGE))
+                                {
+                                    for (BanObject o : ((Message)(((Rule)(rule2.getRight())).getRight())).getMessageList()) {
+                                          RuleContainer.RULES.add(new Rule(rule2.getLeft(),BELIEVES,new Rule(((Rule)(rule2.getRight())).getLeft(),BELIEVES,o)));
+                                    }
+                                }
+                            }
+                            if(((Rule)(rule2.getRight())).getAction().equals(SAID))
+                            {
+                                if(((Rule)(rule2.getRight())).getRight().getType().equals(MESSAGE))
+                                {
+                                    for (BanObject o : ((Message)(((Rule)(rule2.getRight())).getRight())).getMessageList()) {
+                                        RuleContainer.RULES.add(new Rule(rule2.getLeft(),BELIEVES,new Rule(((Rule)(rule2.getRight())).getLeft(),SAID,o)));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         } else if (rule1 != null && rule2 == null) {
 
             if (rule1.getLeft().getType().equals(BanObjectType.PRINCIPAL)) {
                 if (rule1.getAction().equals(SEES)) {
                     if (rule1.getRight().getType().equals(BanObjectType.MESSAGE)) {
-                        System.out.println("hi");
                         for (BanObject bo : ((Message) (rule1.getRight())).getMessageList()) {
                             RuleContainer.addRule(new Rule(rule1.getLeft(), SEES, bo));
                         }
@@ -267,6 +307,35 @@ public class RuleBuilder {
                                 if(((Key)o).isFresh())
                                     ((Message)(rule1.getRight())).setFresh(true);
                                 RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
+                            }
+                        }
+                    }
+                }
+            }
+            if(rule1.getLeft().getType().equals(PRINCIPAL))
+            {
+                if(rule1.getAction().equals(BELIEVES))
+                {
+                    if (rule1.getRight().getType().equals(RULE)){
+                        if(((Rule)(rule1.getRight())).getLeft().getType().equals(PRINCIPAL))
+                        {
+                            if(((Rule)(rule1.getRight())).getAction().equals(BELIEVES))
+                            {
+                                if(((Rule)(rule1.getRight())).getRight().getType().equals(MESSAGE))
+                                {
+                                    for (BanObject o : ((Message)(((Rule)(rule1.getRight())).getRight())).getMessageList()) {
+                                        RuleContainer.RULES.add(new Rule(rule1.getLeft(),BELIEVES,new Rule(((Rule)(rule1.getRight())).getLeft(),BELIEVES,o)));
+                                    }
+                                }
+                            }
+                            if(((Rule)(rule1.getRight())).getAction().equals(SAID))
+                            {
+                                if(((Rule)(rule1.getRight())).getRight().getType().equals(MESSAGE))
+                                {
+                                    for (BanObject o : ((Message)(((Rule)(rule1.getRight())).getRight())).getMessageList()) {
+                                        RuleContainer.RULES.add(new Rule(rule1.getLeft(),BELIEVES,new Rule(((Rule)(rule1.getRight())).getLeft(),SAID,o)));
+                                    }
+                                }
                             }
                         }
                     }
