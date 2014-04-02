@@ -81,7 +81,7 @@ public class RuleBuilder {
              *  P believes fresh(X), P believes Q said X =>  P believes Q said X
              */
             if ((rule1.getAction().equals(BELIEVES)) &&
-                    (rule1.getRight().getType().equals(MESSAGE)) && (((Message) rule1.getRight()).isFresh()) &&
+                    isRightSideFresh(rule1) &&
 
                     (rule2.getAction().equals(BELIEVES)) &&
                     ((rule2.getRight().getType().equals(RULE)) &&
@@ -93,7 +93,6 @@ public class RuleBuilder {
                     (rule1.getRight().equals(((Rule) rule2.getRight()).getRight()))) {
                 //P believes Q said X
                 RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, new Rule(((Rule) rule2.getRight()).getLeft(), BELIEVES, rule1.getRight())));
-//                return new Rule(rule1.getLeft(), BELIEVES, new Rule(((Rule)rule2.getRight()).getLeft(), BELIEVES, rule1.getRight()));
             }
 
             //P believes public Q, P sees {X}_private_K => P believes Q said X
@@ -225,7 +224,7 @@ public class RuleBuilder {
                                 RuleContainer.addRule(new Rule(rule2.getLeft(), BELIEVES, rule2.getRight()));
 
                             }
-                            if(o.getType().equals(SHARED_KEY))
+                            if((o.getType().equals(KEY)) && ((Key)o).getKeyType().equals(SHARED_KEY))
                             {
                                 if(((Key)o).isFresh())
                                     ((Message)(rule2.getRight())).setFresh(true);
@@ -279,6 +278,12 @@ public class RuleBuilder {
         }
         // Teoretic s-ar putea facea regula cu compuneri, discutabil
 
+    }
+
+    private static boolean isRightSideFresh(Rule rule1) {
+        return ((rule1.getRight().getType().equals(MESSAGE)) && (((Message) rule1.getRight()).isFresh())) ||
+                ((rule1.getRight().getType().equals(NONCE)) && (((Nonce) rule1.getRight()).isFresh())) ||
+                ((rule1.getRight().getType().equals(TIMESTAMP)) && (((TimeStmp) rule1.getRight()).isFresh()));
     }
 
     public static List<BanObject> GenerateRules(List<BanObject> Rules) {
