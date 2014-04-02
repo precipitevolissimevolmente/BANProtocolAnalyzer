@@ -262,7 +262,7 @@ public class RuleBuilder {
                                     ((Message)(rule1.getRight())).setFresh(true);
                                 RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
                             }
-                            if(o.getType().equals(SHARED_KEY))
+                            if((o.getType().equals(KEY)) && ((Key)o).getKeyType().equals(SHARED_KEY))
                             {
                                 if(((Key)o).isFresh())
                                     ((Message)(rule1.getRight())).setFresh(true);
