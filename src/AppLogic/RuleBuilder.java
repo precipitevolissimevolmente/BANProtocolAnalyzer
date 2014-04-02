@@ -260,7 +260,7 @@ public class RuleBuilder {
                                 if(((Rule)(rule2.getRight())).getRight().getType().equals(MESSAGE))
                                 {
                                     for (BanObject o : ((Message)(((Rule)(rule2.getRight())).getRight())).getMessageList()) {
-                                          RuleContainer.addRule(new Rule(rule2.getLeft(),BELIEVES,new Rule(((Rule)(rule2.getRight())).getLeft(),BELIEVES,o)));
+                                          RuleContainer.addRule(new Rule(rule2.getLeft(), BELIEVES, new Rule(((Rule) (rule2.getRight())).getLeft(), BELIEVES, o)));
                                     }
                                 }
                             }
@@ -288,30 +288,64 @@ public class RuleBuilder {
 
                     }
                 }
-                if(rule1.getAction().equals(BELIEVES)){
+                //if(rule1.getAction().equals(BELIEVES)){
                     if(rule1.getRight().getType().equals(BanObjectType.MESSAGE)){
                         for (BanObject o  : ((Message)(rule1.getRight())).getMessageList()) {
                              if(o.getType().equals(TIMESTAMP))
                              {
-                                 if(((TimeStmp)o).isFresh())
-                                     ((Message)(rule1.getRight())).setFresh(true);
+                                 if(CheckFreshness((Principal)rule1.getLeft(),(TimeStmp)o))
+                                 {
+                                 ((Message)(rule1.getRight())).setFresh(true);
+                                 ((TimeStmp)(o)).setFresh(true);
                                  RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
+                                 }
                              }
                             if(o.getType().equals(NONCE))
                             {
-                                if(((Nonce)o).isFresh())
-                                    ((Message)(rule1.getRight())).setFresh(true);
+                                if(CheckFreshness((Principal)rule1.getLeft(),(Nonce)o))
+                                {((Message)(rule1.getRight())).setFresh(true);
+                                ((Nonce)(o)).setFresh(true);
                                 RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
+                                }
                             }
-                            if((o.getType().equals(KEY)) && ((Key)o).getKeyType().equals(SHARED_KEY))
+                            /*if((o.getType().equals(KEY)) && ((Key)o).getKeyType().equals(SHARED_KEY))
                             {
                                 if(((Key)o).isFresh())
                                     ((Message)(rule1.getRight())).setFresh(true);
                                 RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
-                            }
+                            }                     */
                         }
                     }
+
+                if(rule1.getRight().getType().equals(BanObjectType.RULE) && ((Rule)(rule1.getRight())).getRight().getType().equals(MESSAGE)){
+                    for (BanObject o  : ((Message)(((Rule)(rule1.getRight())).getRight())).getMessageList()) {
+                        if(o.getType().equals(TIMESTAMP))
+                        {
+                            if(CheckFreshness((Principal)rule1.getLeft(),(TimeStmp)o))
+                            {
+                                ((Message)(((Rule)(rule1.getRight())).getRight())).setFresh(true);
+                                ((TimeStmp)o).setFresh(true);
+                                RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
+                            }
+                        }
+                        if(o.getType().equals(NONCE))
+                        {
+                            if(CheckFreshness((Principal)rule1.getLeft(),(Nonce)o))
+                            {
+                            ((Message)(rule1.getRight())).setFresh(true);
+                            ((Nonce)o).setFresh(true);
+                            RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
+                            }
+                        }
+                        /*if((o.getType().equals(KEY)) && ((Key)o).getKeyType().equals(SHARED_KEY))
+                        {
+                            if(((Key)o).isFresh())
+                                ((Message)(rule1.getRight())).setFresh(true);
+                            RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
+                        }  */
+                    }
                 }
+                //}
             }
             if(rule1.getLeft().getType().equals(PRINCIPAL))
             {
@@ -403,6 +437,38 @@ public class RuleBuilder {
             }
         }
         return result;
+    }
+
+
+
+    static private boolean CheckFreshness(Principal P,TimeStmp timeStmp)
+    {
+        for (BanObject o : RuleContainer.RULES) {
+            if(o.getType().equals(RULE))
+            {
+                if(((Rule)(o)).getLeft().equals(P) && ((Rule)(o)).getAction().equals(BELIEVES) && ((Rule)(o)).getRight().getType().equals(TIMESTAMP))
+                {
+                    if(timeStmp.getNonceIdentity().equals(((TimeStmp)((Rule)(o)).getRight()).getNonceIdentity()))
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+    static private boolean CheckFreshness(Principal P,Nonce nonce)
+    {
+        for (BanObject o : RuleContainer.RULES) {
+            if(o.getType().equals(RULE))
+            {
+                if(((Rule)(o)).getLeft().equals(P) && ((Rule)(o)).getAction().equals(BELIEVES) && ((Rule)(o)).getRight().getType().equals(NONCE))
+                {
+                    if(nonce.getNonceIdentity().equals(((Nonce)((Rule)(o)).getRight()).getNonceIdentity()))
+                        return true;
+                }
+            }
+        }
+
+        return false;
     }
 
 }

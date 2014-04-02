@@ -53,6 +53,7 @@ public class Message implements BanObject {
     public String toString() {
         return "Message{" +
                 "messageList=" + messageList +
+                "fresh?>" + fresh +
                 '}';
     }
 }
