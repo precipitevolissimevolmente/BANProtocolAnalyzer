@@ -332,7 +332,7 @@ public class RuleBuilder {
                         {
                             if(CheckFreshness((Principal)rule1.getLeft(),(Nonce)o))
                             {
-                            ((Message)(rule1.getRight())).setFresh(true);
+                                ((Message)(((Rule)(rule1.getRight())).getRight())).setFresh(true);
                             ((Nonce)o).setFresh(true);
                             RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
                             }

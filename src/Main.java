@@ -13,12 +13,12 @@ public class Main {
         JSONBuilder kerberos = new JSONBuilder("/resources/Kerberos.json", "/resources/KerberosAssumption.json");
         List<Rule> idealisedRules = kerberos.getIdealisedRules();
         List<Rule> assumptions = kerberos.getAssumptions();
-        RuleContainer.RULES.addAll(idealisedRules);
-        RuleContainer.RULES.addAll(assumptions);
+//        RuleContainer.RULES.addAll(idealisedRules);
+//        RuleContainer.RULES.addAll(assumptions);
 
         JSONBuilder nssk = new JSONBuilder("/resources/Needham-Schroeder-Shared-keys.json", "/resources/NSSKAssumptions.json");
-        nssk.getIdealisedRules();
-        nssk.getAssumptions();
+        RuleContainer.RULES.addAll(nssk.getIdealisedRules());
+        RuleContainer.RULES.addAll(nssk.getAssumptions());
 
         boolean fresh = true;
         Message messageX = new Message(fresh);
