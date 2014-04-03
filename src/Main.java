@@ -13,14 +13,28 @@ public class Main {
         JSONBuilder kerberos = new JSONBuilder("/resources/Kerberos.json", "/resources/KerberosAssumption.json");
         List<Rule> idealisedRules = kerberos.getIdealisedRules();
         List<Rule> assumptions = kerberos.getAssumptions();
-//        RuleContainer.RULES.addAll(idealisedRules);
-//        RuleContainer.RULES.addAll(assumptions);
+        //RuleContainer.RULES.addAll(idealisedRules);
+        RuleContainer.RULES.addAll(assumptions);
+        System.out.println(idealisedRules.size());
+        int i=0;
+        for (Rule ir : idealisedRules) {
+             RuleContainer.addRule(ir);
+            i++;
+            System.out.println("Dupa regula "+i+"\n\n");
+            RuleBuilder.GenerateRules(RuleContainer.RULES);
+            for (BanObject bo : RuleContainer.RULES) {
+                System.out.println(bo.toString());
 
+            }
+            System.out.println(RuleContainer.RULES.size());
+            System.out.println("--------------");
+
+        }
         JSONBuilder nssk = new JSONBuilder("/resources/Needham-Schroeder-Shared-keys.json", "/resources/NSSKAssumptions.json");
-        RuleContainer.RULES.addAll(nssk.getIdealisedRules());
-        RuleContainer.RULES.addAll(nssk.getAssumptions());
+//        RuleContainer.RULES.addAll(nssk.getIdealisedRules());
+//        RuleContainer.RULES.addAll(nssk.getAssumptions());
 
-        boolean fresh = true;
+       /* boolean fresh = true;
         Message messageX = new Message(fresh);
         Principal P = new Principal("P");
         Nonce nA=new Nonce();
@@ -35,7 +49,7 @@ public class Main {
         em.setMessage(messageX);
         Rule rule1 = new Rule(P, BELIEVES, messageX);
         Rule rule2 = new Rule(P, BELIEVES, new Rule(new Principal("Q"), SAID, messageX));
-        Rule rule3=new Rule(P,SEES,messageX);
+        Rule rule3=new Rule(P,SEES,messageX);*/
         //RuleContainer.RULES.add(rule1);
         //RuleContainer.RULES.add(rule2);
         //RuleContainer.RULES.add(rule3);
@@ -46,8 +60,6 @@ public class Main {
 //        RuleBuilder.CombineRuleWith2Parameters(rl,r2,true);
 
 
-        System.out.println(RuleContainer.RULES.size());
-        System.out.println("--------------");
 
        /* RuleBuilder.GenerateRules(RuleContainer.RULES);
         for (BanObject bo : RuleContainer.RULES) {
@@ -75,10 +87,10 @@ public class Main {
         rul2.setRight(emsg);
         RuleContainer.RULES.add(rul1);
         RuleContainer.RULES.add(rul2);                  */
-        RuleBuilder.GenerateRules(RuleContainer.RULES);
-        for (BanObject bo : RuleContainer.RULES) {
-            System.out.println(bo.toString());
-
-        }
+//        RuleBuilder.GenerateRules(RuleContainer.RULES);
+//        for (BanObject bo : RuleContainer.RULES) {
+//            System.out.println(bo.toString());
+//
+//        }
     }
 }

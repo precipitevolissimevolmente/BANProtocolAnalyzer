@@ -25,7 +25,9 @@ public class RuleBuilder {
                             && (((EncryptedMessage) (rule2.getRight())).getKey().getKeyType().equals(SHARED_KEY))
                             && (((EncryptedMessage) (rule2.getRight())).getKey().getQ().equals(rule1.getLeft())
                             || ((EncryptedMessage) (rule2.getRight())).getKey().getP().equals(rule1.getLeft())
-                    )) {
+                             )
+                            && ((EncryptedMessage) (rule2.getRight())).getKey().equals((Key)(rule1.getRight()))
+                            ) {
                         if ((((Key) (rule1.getRight())).getQ()).equals(rule1.getLeft()) &&
                                 !(((Key) (rule1.getRight())).getP()).equals(rule1.getLeft()))    //cheia nu este partajata de un singur agent
                         {
@@ -38,7 +40,6 @@ public class RuleBuilder {
                         } else if ((((Key) (rule1.getRight())).getP()).equals(rule1.getLeft())
                                 && !(((Key) (rule1.getRight())).getQ()).equals(rule1.getLeft()))        //cheia nu este partajata de un singur agent
                         {
-                            System.out.println("ok");
                             RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, new Rule(((Key) (rule1.getRight())).getQ(), SAID,
                                     ((EncryptedMessage) (rule2.getRight())).getMessage())));
 //                            return new Rule(rule1.getLeft(),BELIEVES,new Rule(((Key)(rule1.getRight())).getP(),SAID,
@@ -295,17 +296,22 @@ public class RuleBuilder {
                              {
                                  if(CheckFreshness((Principal)rule1.getLeft(),(TimeStmp)o))
                                  {
-                                 ((Message)(rule1.getRight())).setFresh(true);
-                                 ((TimeStmp)(o)).setFresh(true);
-                                 RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
+                                  Message msg=new Message();
+                                     msg=((Message)(rule1.getRight()));
+                                     msg.setFresh(true);
+                                     ((TimeStmp)(o)).setFresh(true);
+                                 RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, msg));
                                  }
                              }
                             if(o.getType().equals(NONCE))
                             {
                                 if(CheckFreshness((Principal)rule1.getLeft(),(Nonce)o))
-                                {((Message)(rule1.getRight())).setFresh(true);
-                                ((Nonce)(o)).setFresh(true);
-                                RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
+                                {Message msg=new Message();
+                                    msg=((Message)(rule1.getRight()));
+                                    msg.setFresh(true);
+
+                                    ((Nonce)(o)).setFresh(true);
+                                RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, msg));
                                 }
                             }
                             /*if((o.getType().equals(KEY)) && ((Key)o).getKeyType().equals(SHARED_KEY))
@@ -323,18 +329,23 @@ public class RuleBuilder {
                         {
                             if(CheckFreshness((Principal)rule1.getLeft(),(TimeStmp)o))
                             {
-                                ((Message)(((Rule)(rule1.getRight())).getRight())).setFresh(true);
+                                Message msg;
+                                msg=(Message)(((Rule)(rule1.getRight())).getRight());
+                                msg.setFresh(true);
                                 ((TimeStmp)o).setFresh(true);
-                                RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
+                                RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES,msg));
                             }
                         }
                         if(o.getType().equals(NONCE))
                         {
                             if(CheckFreshness((Principal)rule1.getLeft(),(Nonce)o))
                             {
-                                ((Message)(((Rule)(rule1.getRight())).getRight())).setFresh(true);
+                                Message msg;
+                                msg=((Message)(((Rule)(rule1.getRight())).getRight()));
+                                msg.setFresh(true);
+
                             ((Nonce)o).setFresh(true);
-                            RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
+                            RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, msg));
                             }
                         }
                         /*if((o.getType().equals(KEY)) && ((Key)o).getKeyType().equals(SHARED_KEY))
@@ -464,7 +475,7 @@ public class RuleBuilder {
             {
                 if(((Rule)(o)).getLeft().equals(P) && ((Rule)(o)).getAction().equals(BELIEVES) && ((Rule)(o)).getRight().getType().equals(NONCE))
                 {
-                    if(nonce.getNonceIdentity().equals(((Nonce)((Rule)(o)).getRight()).getNonceIdentity()))
+                    if(nonce.getNonceIdentity().equals(((Nonce)((Rule)(o)).getRight()).getNonceIdentity()) )
                         return true;
                 }
             }
