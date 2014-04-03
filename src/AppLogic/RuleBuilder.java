@@ -56,6 +56,7 @@ public class RuleBuilder {
                             && (((EncryptedMessage) (rule2.getRight())).getKey().getKeyType().equals(SHARED_KEY))
                             && (((EncryptedMessage) (rule2.getRight())).getKey().getQ().equals(rule1.getLeft())
                             || ((EncryptedMessage) (rule2.getRight())).getKey().getP().equals(rule1.getLeft()))
+                            && ((EncryptedMessage) (rule2.getRight())).getKey().equals((Key)(rule1.getRight()))
                             ) {
                         if ((((Key) (rule1.getRight())).getQ()).equals(rule1.getLeft()) &&
                                 !(((Key) (rule1.getRight())).getP()).equals(rule1.getLeft()))           //cheia nu este partajata de un singur agent
@@ -461,7 +462,7 @@ public class RuleBuilder {
             {
                 if(((Rule)(o)).getLeft().equals(P) && ((Rule)(o)).getAction().equals(BELIEVES) && ((Rule)(o)).getRight().getType().equals(TIMESTAMP))
                 {
-                    if(timeStmp.getNonceIdentity().equals(((TimeStmp)((Rule)(o)).getRight()).getNonceIdentity()))
+                    if(timeStmp.getNonceIdentity().equals(((TimeStmp)((Rule)(o)).getRight()).getNonceIdentity()) ||timeStmp.getNonceIdentity().equals(P))
                         return true;
                 }
             }
@@ -475,7 +476,7 @@ public class RuleBuilder {
             {
                 if(((Rule)(o)).getLeft().equals(P) && ((Rule)(o)).getAction().equals(BELIEVES) && ((Rule)(o)).getRight().getType().equals(NONCE))
                 {
-                    if(nonce.getNonceIdentity().equals(((Nonce)((Rule)(o)).getRight()).getNonceIdentity()) )
+                    if(nonce.getNonceIdentity().equals(((Nonce)((Rule)(o)).getRight()).getNonceIdentity()) ||nonce.getNonceIdentity().equals(P) )
                         return true;
                 }
             }
