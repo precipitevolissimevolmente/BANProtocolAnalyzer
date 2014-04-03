@@ -10,13 +10,22 @@ import static ban.ActionType.*;
 
 public class Main {
     public static void main(String[] args) {
+        JSONBuilder ASRH = new JSONBuilder("/resources/ANDREW-SECURE-RPC-HANDSHAKE", "/resources/ASSUMPTIONS-ANDREW-SECURE-RPC-HANDSHAKE");
+        ASRH.getIdealisedRules();
+        ASRH.getAssumptions();
+
         JSONBuilder kerberos = new JSONBuilder("/resources/Kerberos.json", "/resources/KerberosAssumption.json");
-//        List<Rule> idealisedRules = kerberos.getIdealisedRules();
-//        List<Rule> assumptions = kerberos.getAssumptions();
+        List<Rule> idealisedRules = kerberos.getIdealisedRules();
+
+        for (Rule idealisedRule : idealisedRules) {
+            System.out.println(idealisedRule);
+        }
+        System.out.println("--------------------------------------------------------------------------------");
+        List<Rule> assumptions = kerberos.getAssumptions();
 
         JSONBuilder nssk = new JSONBuilder("/resources/Needham-Schroeder-Shared-keys.json", "/resources/NSSKAssumptions.json");
-        List<Rule> idealisedRules=nssk.getIdealisedRules();
-        List<Rule> assumptions=nssk.getAssumptions();
+//        List<Rule> idealisedRules=nssk.getIdealisedRules();
+//        List<Rule> assumptions=nssk.getAssumptions();
 
 
         //RuleContainer.RULES.addAll(idealisedRules);

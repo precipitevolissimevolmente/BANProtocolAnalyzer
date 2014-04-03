@@ -1,0 +1,89 @@
+{
+    "protocolMessages": [
+        {
+            "sender": "A",
+            "receiver": "B",
+            "messages": [
+                {
+                    "type": "encryptedMessage",
+                    "key": {
+                        "keyType": "SHARED_KEY",
+                        "between": ["A", "B"]
+                    },
+                    "message": [
+                        {
+                            "type": "nonce",
+                            "identity": "A"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sender": "B",
+            "receiver": "A",
+            "messages": [
+                {
+                    "type": "encryptedMessage",
+                    "key": {
+                        "keyType": "SHARED_KEY",
+                        "between": ["A", "B"]
+                    },
+                    "message": [
+                        {
+                            "type": "nonce",
+                            "identity": "A"
+                        },
+                        {
+                            "type": "nonce",
+                            "identity": "B"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sender": "A",
+            "receiver": "B",
+            "messages": [
+                {
+                    "type": "encryptedMessage",
+                    "key": {
+                        "keyType": "SHARED_KEY",
+                        "between": ["A", "B"]
+                    },
+                    "message": [
+                        {
+                            "type": "nonce",
+                            "identity": "B"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sender": "B",
+            "receiver": "A",
+            "messages": [
+                {
+                    "type": "encryptedMessage",
+                    "key": {
+                        "keyType": "SHARED_KEY",
+                        "between": ["A", "B"]
+                    },
+                    "message": [
+                        {
+                            "type": "key",
+                            "keyType": "SHARED_KEY",
+                            "between": ["A", "B"]
+                        },
+                        {
+                            "type": "nonce",
+                            "identity": "B"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
