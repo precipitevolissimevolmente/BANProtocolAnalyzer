@@ -1,5 +1,6 @@
 import AppLogic.RuleBuilder;
 import AppLogic.RuleContainer;
+import Util.Report;
 import Util.TechFunctions;
 import ban.Rule;
 import json.JSONBuilder;
@@ -17,13 +18,14 @@ public class Main {
 //            List<Rule> idealisedRules = kerberos.getIdealisedRules();
 //            List<Rule> assumptions = kerberos.getAssumptions();
         JSONBuilder nssk = new JSONBuilder("/resources/Needham-Schroeder-Shared-keys.json", "/resources/NSSKAssumptions.json");
-            List<Rule> idealisedRules= new ArrayList<Rule>();
-            List<Rule> assumptions= new ArrayList<Rule>();
-//        List<Rule> idealisedRules = nssk.getIdealisedRules();
-//        List<Rule> assumptions = nssk.getAssumptions();
+        List<Rule> idealisedRules = nssk.getIdealisedRules();
+        List<Rule> assumptions = nssk.getAssumptions();
 
         TechFunctions.Print(idealisedRules,assumptions);
 
+        System.out.println("****");
 
+        Report.CheckForGoals();
+        Report.PrintReport();
     }
 }
