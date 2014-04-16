@@ -20,15 +20,21 @@ public class TechFunctions {
     {
         RuleContainer.RULES.addAll(assumptions);
         int i=0;
+        int sizeOfContainer;
         for (Rule ir : idealisedProtocol) {
+            sizeOfContainer=RuleContainer.RULES.size();
             RuleContainer.addRule(ir);
             i++;
             System.out.println("Dupa regula "+i+"\n\n");
             RuleBuilder.GenerateRules(RuleContainer.RULES);
+
             for (BanObject bo : RuleContainer.RULES) {
                 System.out.println(bo.toString());
 
             }
+            if(RuleContainer.RULES.size()==sizeOfContainer)
+                System.out.println("La adaugarea mesajului "+i+" nu se genereaza reguli noi!");
+
             System.out.println(RuleContainer.RULES.size());
             System.out.println("--------------");
 
