@@ -79,6 +79,7 @@
                         },
                         {
                             "type": "nonce",
+                            "name": "prime",
                             "identity": "B"
                         }
                     ]

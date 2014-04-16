@@ -42,11 +42,31 @@
             }
         },
         {
+            "left": "B",
+            "action": "BELIEVES",
+            "right": {
+                "type": "key",
+                "name": "prime",
+                "keyType": "SHARED_KEY",
+                "between": ["A", "B"]
+            }
+        },
+        {
             "left": "A",
             "action": "BELIEVES",
             "right":  {
                 "type": "nonce",
                 "fresh":"",
+                "identity": "B"
+            }
+        },
+        {
+            "left": "A",
+            "action": "BELIEVES",
+            "right":  {
+                "type": "nonce",
+                "fresh":"",
+                "name":"prim",
                 "identity": "B"
             }
         }

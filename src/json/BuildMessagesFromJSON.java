@@ -25,6 +25,7 @@ public class BuildMessagesFromJSON {
     private List<TimeStmp> timeStamps = new ArrayList<>();
     private List<Nonce> nonces = new ArrayList<>();
     private static final String ENCRYPTED_MESSAGE = "encryptedMessage";
+    private static String NAME = "name";
 
 
     public List<IdealisedMessage> buildIdealisedMessages(String jsonFile) throws IOException {
@@ -158,6 +159,10 @@ public class BuildMessagesFromJSON {
         nonce.setNonceIdentity(identity);
         nonce.setFresh(fresh);
 
+        if (jsonObject.has(NAME)) {
+            nonce.setNonceName(jsonObject.getString(NAME));
+        }
+
         return getNewOrExistentNonce(nonce);
     }
 
@@ -183,6 +188,9 @@ public class BuildMessagesFromJSON {
             key.setP(p);
             key.setQ(q);
             key.setFresh(fresh);
+            if (keyJSON.has(NAME)) {
+                key.setKeyName(keyJSON.getString(NAME));
+            }
             return getNewOrExistentKey(key);
         }
 

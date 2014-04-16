@@ -5,7 +5,7 @@ import static message.BanObjectType.NONCE;
 public class Nonce implements BanObject {
     boolean fresh;
     private Principal NonceIdentity;
-    //private String Label;
+    private String NonceName="";
 
     public Principal getNonceIdentity() {
         return NonceIdentity;
@@ -31,13 +31,22 @@ public class Nonce implements BanObject {
 
     @Override
     public String toString() {
-        return fresh ? "Fresh NONCE " + NonceIdentity : "NONCE "+ NonceIdentity.toString();
+        return fresh ? "Fresh NONCE " + NonceName + NonceIdentity : "NONCE "+ NonceIdentity.toString();
+    }
+
+    public String getNonceName() {
+        return NonceName;
+    }
+
+    public void setNonceName(String nonceName) {
+        NonceName = nonceName;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Nonce) {
             if ((((Nonce) obj).getNonceIdentity().equals(this.getNonceIdentity())) &&
+                    (((Nonce) obj).getNonceName().equals(this.getNonceName())) &&
                     (((Nonce) obj).isFresh() == this.isFresh()) &&
                     (((Nonce) obj).getType() == this.getType())) {
                 return true;

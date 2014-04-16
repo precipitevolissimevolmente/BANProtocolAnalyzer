@@ -12,6 +12,7 @@ import static ban.ActionType.*;
 
 public class Main {
     public static void main(String[] args) {
+        JSONBuilder nssk1 = new JSONBuilder("/resources/ANDREW-SECURE-RPC-HANDSHAKE", "/resources/ASSUMPTIONS-ANDREW-SECURE-RPC-HANDSHAKE");
 //            JSONBuilder kerberos = new JSONBuilder("/resources/Kerberos.json", "/resources/KerberosAssumption.json");
 //            List<Rule> idealisedRules = kerberos.getIdealisedRules();
 //            List<Rule> assumptions = kerberos.getAssumptions();

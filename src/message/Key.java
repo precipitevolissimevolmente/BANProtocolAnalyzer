@@ -7,6 +7,7 @@ public class Key implements BanObject {
     private Principal p;
     private Principal q;
     private boolean fresh;
+    private String keyName="";
 
     public boolean isFresh() {
         return fresh;
@@ -21,8 +22,8 @@ public class Key implements BanObject {
 
     public Key(KeyType sharedKey, Principal p, Principal q) {
         this.keyType = sharedKey;
-        this.p=p;
-        this.q=q;
+        this.p = p;
+        this.q = q;
     }
 
     public Principal getP() {
@@ -57,9 +58,10 @@ public class Key implements BanObject {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Key) {
-        if((((Key)obj).getKeyType().equals(this.getKeyType()))
-                && (((Key)obj).getP().equals(this.getP())) && (((Key)obj).getQ().equals(this.getQ()))
-                && (((Key)obj).isFresh() == (this.isFresh()))) {
+            if ((((Key) obj).getKeyType().equals(this.getKeyType()))
+                    && (((Key) obj).getKeyName().equals(this.getKeyName()))
+                    && (((Key) obj).getP().equals(this.getP())) && (((Key) obj).getQ().equals(this.getQ()))
+                    && (((Key) obj).isFresh() == (this.isFresh()))) {
                 return true;
             }
         }
@@ -69,9 +71,18 @@ public class Key implements BanObject {
     @Override
     public String toString() {
         return "Key{" + keyType +
+                " " + keyName +
                 ", p=" + p +
                 ", q=" + q +
                 ", fresh=" + fresh +
                 '}';
+    }
+
+    public String getKeyName() {
+        return keyName;
+    }
+
+    public void setKeyName(String keyName) {
+        this.keyName = keyName;
     }
 }
