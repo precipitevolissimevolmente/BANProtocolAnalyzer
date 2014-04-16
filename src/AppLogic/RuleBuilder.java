@@ -26,7 +26,7 @@ public class RuleBuilder {
                             && (((EncryptedMessage) (rule2.getRight())).getKey().getQ().equals(rule1.getLeft())
                             || ((EncryptedMessage) (rule2.getRight())).getKey().getP().equals(rule1.getLeft())
                              )
-                            && ((EncryptedMessage) (rule2.getRight())).getKey().equals((Key)(rule1.getRight()))
+                            && (CheckKeyEquality(((EncryptedMessage) (rule2.getRight())).getKey(),((Key)(rule1.getRight()))))
                             ) {
                         if ((((Key) (rule1.getRight())).getQ()).equals(rule1.getLeft()) &&
                                 !(((Key) (rule1.getRight())).getP()).equals(rule1.getLeft()))    //cheia nu este partajata de un singur agent
@@ -56,8 +56,8 @@ public class RuleBuilder {
                             && (((EncryptedMessage) (rule2.getRight())).getKey().getKeyType().equals(SHARED_KEY))
                             && (((EncryptedMessage) (rule2.getRight())).getKey().getQ().equals(rule1.getLeft())
                             || ((EncryptedMessage) (rule2.getRight())).getKey().getP().equals(rule1.getLeft()))
-                            && ((EncryptedMessage) (rule2.getRight())).getKey().equals((Key)(rule1.getRight()))
-                            ) {
+                            && (CheckKeyEquality(((EncryptedMessage) (rule2.getRight())).getKey(),((Key)(rule1.getRight())))
+                            )) {
                         if ((((Key) (rule1.getRight())).getQ()).equals(rule1.getLeft()) &&
                                 !(((Key) (rule1.getRight())).getP()).equals(rule1.getLeft()))           //cheia nu este partajata de un singur agent
                         {
@@ -504,6 +504,14 @@ public class RuleBuilder {
             }
         }
 
+        return false;
+    }
+    static private boolean CheckKeyEquality(Key ke1, Key key2)
+    {
+        if(ke1.getQ().equals(key2.getQ()) || ke1.getQ().equals(key2.getP()) && ke1.getP().equals(key2.getQ()) || ke1.getQ().equals(key2.getP()))
+        {
+            return true;
+        }
         return false;
     }
 

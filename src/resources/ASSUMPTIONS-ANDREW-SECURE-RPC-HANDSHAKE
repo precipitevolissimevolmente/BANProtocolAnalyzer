@@ -1,0 +1,54 @@
+{
+    "assumptions": [
+        {
+            "left": "A",
+            "action": "BELIEVES",
+            "right": {
+                "type": "key",
+                "keyType": "SHARED_KEY",
+                "between": ["A", "B"]
+            }
+        },
+        {
+            "left": "A",
+            "action": "BELIEVES",
+            "right": {
+                "type": "rule",
+                "left": "B",
+                "action": "CONTROLS",
+                "right": {
+                    "type": "key",
+                    "keyType": "SHARED_KEY",
+                    "between": ["A", "B"]
+                }
+            }
+        },
+        {
+            "left": "A",
+            "action": "BELIEVES",
+            "right":  {
+                "type": "nonce",
+                "fresh":"",
+                "identity": "A"
+            }
+        },
+        {
+            "left": "B",
+            "action": "BELIEVES",
+            "right": {
+                "type": "key",
+                "keyType": "SHARED_KEY",
+                "between": ["A", "B"]
+            }
+        },
+        {
+            "left": "A",
+            "action": "BELIEVES",
+            "right":  {
+                "type": "nonce",
+                "fresh":"",
+                "identity": "B"
+            }
+        }
+    ]
+}
