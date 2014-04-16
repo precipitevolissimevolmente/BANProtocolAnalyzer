@@ -315,12 +315,20 @@ public class RuleBuilder {
                                 RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, msg));
                                 }
                             }
-                            /*if((o.getType().equals(KEY)) && ((Key)o).getKeyType().equals(SHARED_KEY))
+                            if((o.getType().equals(KEY)) && ((Key)o).getKeyType().equals(SHARED_KEY))
                             {
-                                if(((Key)o).isFresh())
-                                    ((Message)(rule1.getRight())).setFresh(true);
-                                RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
-                            }                     */
+                                if(CheckFreshness((Principal)rule1.getLeft(), (Key)o))
+                                {
+                                    Message msg=new Message();
+                                    msg=((Message)(rule1.getRight()));
+                                    msg.setFresh(true);
+
+                                    ((Key)(o)).setFresh(true);
+                                    RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, msg));
+
+                                }
+
+                            }
                         }
                     }
 
@@ -349,12 +357,20 @@ public class RuleBuilder {
                             RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, msg));
                             }
                         }
-                        /*if((o.getType().equals(KEY)) && ((Key)o).getKeyType().equals(SHARED_KEY))
+                        if((o.getType().equals(KEY)) && ((Key)o).getKeyType().equals(SHARED_KEY))
                         {
-                            if(((Key)o).isFresh())
-                                ((Message)(rule1.getRight())).setFresh(true);
-                            RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, rule1.getRight()));
-                        }  */
+                            if(CheckFreshness((Principal)rule1.getLeft(), (Key)o))
+                                {
+                                    Message msg=new Message();
+                                    msg=((Message)(((Rule)(rule1.getRight())).getRight()));
+                                    msg.setFresh(true);
+
+                                    ((Key)(o)).setFresh(true);
+                                    RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, msg));
+
+                                }
+
+                        }
                     }
                 }
                 //}
@@ -477,6 +493,22 @@ public class RuleBuilder {
                 if(((Rule)(o)).getLeft().equals(P) && ((Rule)(o)).getAction().equals(BELIEVES) && ((Rule)(o)).getRight().getType().equals(NONCE))
                 {
                     if(nonce.getNonceIdentity().equals(((Nonce)((Rule)(o)).getRight()).getNonceIdentity()) ||nonce.getNonceIdentity().equals(P) )
+                        return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    static private boolean CheckFreshness(Principal P,Key key)
+    {
+        for (BanObject o : RuleContainer.RULES) {
+            if(o.getType().equals(RULE))
+            {
+                if(((Rule)(o)).getLeft().equals(P) && ((Rule)(o)).getAction().equals(BELIEVES) && ((Rule)(o)).getRight().getType().equals(KEY))
+                {
+                    //if(nonce.getNonceIdentity().equals(((Nonce)((Rule)(o)).getRight()).getNonceIdentity()) ||nonce.getNonceIdentity().equals(P) )
                         return true;
                 }
             }
