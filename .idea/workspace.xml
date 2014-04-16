@@ -2,60 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" name="Default" comment="libs">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/commons-beanutils-1.8.0-javadoc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/commons-beanutils-1.8.0-sources.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/commons-beanutils-1.8.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/commons-beanutils-bean-collections-1.8.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/commons-beanutils-core-1.8.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/commons-collections-3.2.1-javadoc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/commons-collections-3.2.1-sources.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/commons-collections-3.2.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/commons-collections-testframework-3.2.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/commons-io-2.4-javadoc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/commons-io-2.4-sources.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/commons-io-2.4-test-sources.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/commons-io-2.4-tests.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/commons-io-2.4.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-lang-2.5/commons-lang-2.5-javadoc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-lang-2.5/commons-lang-2.5-sources.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-lang-2.5/commons-lang-2.5.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/commons-logging-1.1.1-javadoc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/commons-logging-1.1.1-sources.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/commons-logging-1.1.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/commons-logging-adapters-1.1.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/commons-logging-api-1.1.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/commons-logging-tests.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/ezmorph-1.0.6.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/json-lib-2.4-jdk15.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-lang-2.5/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/NOTICE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/NOTICE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/NOTICE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-lang-2.5/NOTICE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/NOTICE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/README.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-collections-3.2.1/RELEASE-NOTES.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-beanutils-1.8.0/RELEASE-NOTES.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-io-2.4/RELEASE-NOTES.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-lang-2.5/RELEASE-NOTES.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.1.1/RELEASE-NOTES.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_beanutils_1_8.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_beanutils_1_8.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_collections_3_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_collections_3_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_io_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_io_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_lang_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_lang_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/commons_logging_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/commons_logging_1_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
+    <list id="61d802b4-a61d-434b-b0a6-c7ca47613d18" name="New Input Protocols" comment="" />
     <ignored path="BANProtocolAnalyzer.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Agent.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395693374778" ignored="false" />
-    <file path="/Dummy.txt" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396203358367" ignored="false" />
+    <file path="/Dummy.txt" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1397668548261" ignored="false" />
     <file path="/Nonce.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395779753708" ignored="false" />
-    <file path="/Main.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396112028196" ignored="false" />
+    <file path="/Main.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1397666303199" ignored="false" />
     <file path="/Key.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395693298046" ignored="false" />
     <file path="/KeyTipe.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395606531778" ignored="false" />
     <file path="/TimeStmp.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395693399390" ignored="false" />
@@ -67,7 +23,7 @@
     <file path="/Rule.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395781722871" ignored="false" />
     <file path="/EncriptedMessage.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395697189031" ignored="false" />
     <file path="/EncryptedMessage.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395864812005" ignored="false" />
-    <file path="/RuleBuilder.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395868532602" ignored="false" />
+    <file path="/RuleBuilder.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1397667601582" ignored="false" />
     <file path="/Principal.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1395779636663" ignored="false" />
     <file path="/IdealisedMessage.java" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396112900346" ignored="false" />
     <file path="/test.json" changelist="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" time="1396104224777" ignored="false" />
@@ -89,24 +45,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/Main.java" line="19" class="Main" package="">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -141,6 +79,9 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -153,7 +94,7 @@
       <file leaf-file-name="BuildMessagesFromJSON.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/json/BuildMessagesFromJSON.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="10" selection-start="2324" selection-end="2324" vertical-scroll-proportion="0.0">
+            <state line="62" column="10" selection-start="2205" selection-end="2205" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -171,7 +112,7 @@
       <file leaf-file-name="Kerberos.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/resources/Kerberos.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="11" selection-start="1310" selection-end="1310" vertical-scroll-proportion="0.0">
+            <state line="33" column="11" selection-start="1202" selection-end="1202" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -180,8 +121,19 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="46" selection-start="1021" selection-end="1021" vertical-scroll-proportion="0.4651163">
+            <state line="21" column="55" selection-start="798" selection-end="798" vertical-scroll-proportion="0.5552764">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RuleBuilder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppLogic/RuleBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="246" column="56" selection-start="15806" selection-end="15806" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -198,7 +150,7 @@
       <file leaf-file-name="IdealisedMessage.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/idealisedprotocol/IdealisedMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="16" selection-start="592" selection-end="592" vertical-scroll-proportion="0.0">
+            <state line="30" column="16" selection-start="605" selection-end="605" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -241,22 +193,22 @@
         <option value="$PROJECT_DIR$/src/ban/ActionType.java" />
         <option value="$PROJECT_DIR$/src/ban/Rule.java" />
         <option value="$PROJECT_DIR$/src/message/Message.java" />
-        <option value="$PROJECT_DIR$/src/AppLogic/RuleBuilder.java" />
         <option value="$PROJECT_DIR$/src/resources/test.json" />
         <option value="$PROJECT_DIR$/src/resources/Kerberos.json" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/idealisedprotocol/IdealisedMessage.java" />
         <option value="$PROJECT_DIR$/src/message/EncryptedMessage.java" />
         <option value="$PROJECT_DIR$/src/json/BuildMessagesFromJSON.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/src/AppLogic/RuleBuilder.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1542" />
-    <option name="height" value="916" />
+    <option name="width" value="1382" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -425,20 +377,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="AppLogic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BANProtocolAnalyzer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BANProtocolAnalyzer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -632,6 +570,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a02a7e87-564b-4e37-9195-b8d2a71c6fb6" name="Default" comment="" />
+      <changelist id="61d802b4-a61d-434b-b0a6-c7ca47613d18" name="New Input Protocols" comment="" />
       <created>1395597067518</created>
       <updated>1395597067518</updated>
     </task>
@@ -715,7 +654,11 @@
       <created>1396203167333</created>
       <updated>1396203167333</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="libs">
+      <created>1397668160758</created>
+      <updated>1397668160758</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -739,10 +682,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1542" height="916" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32760897" sideWeight="0.4972973" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264" sideWeight="0.4972973" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -759,8 +702,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20945945" sideWeight="0.672391" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28137386" sideWeight="0.4972973" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2090909" sideWeight="0.712" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.288" sideWeight="0.4972973" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938075" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -848,16 +791,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/message/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ban/Action.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="14" selection-start="95" selection-end="95" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ban/ActionType.java">
@@ -895,13 +838,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppLogic/RuleBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="16" selection-start="1925" selection-end="1925" vertical-scroll-proportion="0.023943663">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/message/Principal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="48" selection-start="377" selection-end="393" vertical-scroll-proportion="0.0">
@@ -911,14 +847,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/idealisedprotocol/IdealisedMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="16" selection-start="592" selection-end="592" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/message/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+        <state line="30" column="16" selection-start="605" selection-end="605" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -930,30 +859,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/Kerberos.json">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="11" selection-start="1310" selection-end="1310" vertical-scroll-proportion="0.0">
+        <state line="1848" column="25" selection-start="292367" selection-end="292367" vertical-scroll-proportion="0.14206128" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/message/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/json/BuildMessagesFromJSON.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="10" selection-start="2324" selection-end="2324" vertical-scroll-proportion="0.0">
+        <state line="62" column="10" selection-start="2205" selection-end="2205" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+    <entry file="file://$PROJECT_DIR$/src/resources/Kerberos.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1848" column="25" selection-start="292367" selection-end="292367" vertical-scroll-proportion="0.14206128">
+        <state line="33" column="11" selection-start="1202" selection-end="1202" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppLogic/RuleBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="246" column="56" selection-start="15806" selection-end="15806" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="46" selection-start="1021" selection-end="1021" vertical-scroll-proportion="0.4651163">
+        <state line="21" column="55" selection-start="798" selection-end="798" vertical-scroll-proportion="0.5552764">
           <folding />
         </state>
       </provider>
@@ -1033,6 +976,9 @@
         </settings>
       </state>
     </states>
+  </component>
+  <component name="se.expertsystem.intellij.aop.aspectj.AspectJProjectComponent">
+    <setting name="isActivated" value="false" />
   </component>
 </project>
 
