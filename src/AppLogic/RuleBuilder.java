@@ -241,10 +241,16 @@ public class RuleBuilder {
                             }
                             if((o.getType().equals(KEY)) && ((Key)o).getKeyType().equals(SHARED_KEY))
                             {
-                                if(((Key)o).isFresh())
-                                    ((Message)(rule2.getRight())).setFresh(true);
-                                RuleContainer.addRule(new Rule(rule2.getLeft(), BELIEVES, rule2.getRight()));
+                                if(CheckFreshness((Principal)rule1.getLeft(), (Key)o))
+                                {
+                                    Message msg=new Message();
+                                    msg=((Message)(rule2.getRight()));
+                                    msg.setFresh(true);
 
+                                    ((Key)(o)).setFresh(true);
+                                    RuleContainer.addRule(new Rule(rule1.getLeft(), BELIEVES, msg));
+
+                                }
                             }
                         }
                     }
